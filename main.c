@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "random.h"
 
 const int ROWS = 100;
 const int COLS = 100;
