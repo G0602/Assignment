@@ -1,2 +1,5 @@
 # Ignore compiled files
 *.o
+
+# Ignore output files
+canvas.txt

@@ -1,15 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-const int ROWS = 200;
-const int COLS = 200;
+const int ROWS = 100;
+const int COLS = 100;
 
 int main() {
     char array[ROWS][COLS];
 
     for (int i = 0; i < ROWS; i++) {
         for (int j = 0; j < COLS; j++) {
-            array[i][j] = '.';
+            array[i][j] = 'x';
         }
     }
 
