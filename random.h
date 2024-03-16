@@ -3,7 +3,7 @@
 
 #include <stdlib.h>
 
-int getRandomNumber(int min, int max) {
+int ranNum(int min, int max) {
     return min + rand() % (max - min + 1);
 }
 
