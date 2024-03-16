@@ -2,4 +2,4 @@
 *.o
 
 # Ignore output files
-canvas.txt
+*.txt
