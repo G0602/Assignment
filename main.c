@@ -2,7 +2,7 @@
 
 int main(){
 
-    int initialCond();
+    initialCond();
 
     return 0;
 }
