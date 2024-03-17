@@ -32,6 +32,7 @@ point position;
     int vMin;
     int angMax;
     int angMin;
+    char indexNum[7];
 } escShp;
 
 //function to get the initial condition and save it in a text file called initial.txt
@@ -132,8 +133,9 @@ void initialCond(void){
             }
             E[i].angMin = ranNum(0, 90 - E[i].angRange);
             E[i].angMax = E[i].angMin + E[i].angRange;
-            E[i].position.x=ranNum(0,D);
-            E[i].position.y=ranNum(0,D);
+            E[i].position.x = ranNum(0,D);
+            E[i].position.y = ranNum(0,D);
+            snprintf(E[i].indexNum, sizeof(E[i].indexNum), "E%c%03d", E[i].type, i + 1);
         }
     }
    
@@ -141,20 +143,19 @@ void initialCond(void){
     fprintf(file, "escortNum: %d\n\n", N);
 
     fprintf(file, "BATTLE_SHIP's Details:\n");
-    fprintf(file, "\tvMax_b: %d\n", B.vMax);
-    fprintf(file, "\ttype_b: %c\n", B.type);
-    fprintf(file, "\tx_coordiate: %d\n", B.position.x);
-    fprintf(file, "\ty_coordiate: %d\n\n", B.position.y);
+    fprintf(file, "\tvMax: %d\n", B.vMax);
+    fprintf(file, "\ttype: %c\n", B.type);
+    fprintf(file, "\tcoordiate: (%d,%d)\n\n", B.position.x, B.position.y);
 
     for(int i = 0; i < N; i++){
         fprintf(file, "ESCORT_SHIP_%d's Details:\n", i + 1);
-        fprintf(file, "\tvMax_e: %d\n", E[i].vMax);
-        fprintf(file, "\tvMin_e: %d\n", E[i].vMin);
-        fprintf(file, "\ttype_e: %c\n", E[i].type);
+        fprintf(file, "\ttype: %c\n", E[i].type);
+        fprintf(file, "\tindex_number: %s\n", E[i].indexNum);
+        fprintf(file, "\tcoordiate: (%d,%d)\n", E[i].position.x, E[i].position.y);
+        fprintf(file, "\tvMax: %d\n", E[i].vMax);
+        fprintf(file, "\tvMin: %d\n", E[i].vMin);
         fprintf(file, "\tangMin: %d\n", E[i].angMin);
-        fprintf(file, "\tangMax: %d\n", E[i].angMax);
-        fprintf(file, "\tx_coordiate: %d\n", E[i].position.x);
-        fprintf(file, "\ty_coordiate: %d\n\n", E[i].position.y);
+        fprintf(file, "\tangMax: %d\n\n", E[i].angMax);
     }
 
     free(E);
