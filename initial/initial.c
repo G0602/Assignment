@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "../random/random.h"
 #include "initial.h"
-#include"../structures.h"
+#include"../glbl_vars.h"
 
 //function to get the initial condition and save it in a text file called initial.txt
 void initialCond(void){
