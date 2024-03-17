@@ -3,6 +3,7 @@
 #ifndef GLBL_VARS_H
 #define GLBL_VARS_H
 
+#include <stdbool.h>
 //definig the location of the ships
 typedef struct {
     int x;
@@ -37,5 +38,12 @@ typedef struct {
     bool status;//if status is 1 the ship is fine if it's 0 the the ship is destroyed
     char indexNum[7];// for the unique ship identifiyer
 } escShp;
+
+extern int N; // N is for the number of escort ships
+extern int D; // D is for the size of the battle field
+
+extern btlShp B; //B is to indicate the battle ship
+extern escShp *E; //an escShp class pointer to be used as a pointer
+
 
 #endif
