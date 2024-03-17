@@ -27,7 +27,7 @@ typedef struct {
 typedef struct {
 point position;
     char type;
-    int angRng;//angle range
+    int angRange;
     int vMax;
     int vMin;
     int angMax;
@@ -86,14 +86,14 @@ void initialCond(void){
 
         //randomly generted values for B's properties
         B.vMax = ranNum(0,100);
-        switch(ranNum(0,3);){
-            case 0: B.type = U;
+        switch(ranNum(0,3)){
+            case 0: B.type = 'U';
                     break;
-            case 1: B.type = M;
+            case 1: B.type = 'M';
                     break;
-            case 2: B.type = R;
+            case 2: B.type = 'R';
                     break;
-            case 3: B.type = S;
+            case 3: B.type = 'S';
                     break;
         }
         B.position.x=ranNum(0,D);
@@ -103,25 +103,25 @@ void initialCond(void){
         for(int i = 0; i < N; i++){
             E[i].vMax = ranNum(2 ,100);
             E[i].vMin = ranNum(0 ,E[i].vMax - 1);
-            switch(ranNum(0,4);){
-            case 0: E[i].type = A;
+            switch(ranNum(0,4)){
+            case 0: E[i].type = 'A';
                     E[i].angRange = 20;
                     break;
-            case 1: E[i].type = B;
+            case 1: E[i].type = 'B';
                     E[i].angRange = 30;
                     break;
-            case 2: E[i].type = C;
+            case 2: E[i].type = 'C';
                     E[i].angRange = 25;
                     break;
-            case 3: E[i].type = D;
+            case 3: E[i].type = 'D';
                     E[i].angRange = 50;
                     break;
-            case 4: E[i].type = E;
+            case 4: E[i].type = 'E';
                     E[i].angRange = 70;
                     break;
             }
-            E[i].angMin = ranNum(0, 90 - E[i].angRng);
-            E[i].angMax = E[i].angMin + E[i].angRng;
+            E[i].angMin = ranNum(0, 90 - E[i].angRange);
+            E[i].angMax = E[i].angMin + E[i].angRange;
             E[i].position.x=ranNum(0,D);
             E[i].position.y=ranNum(0,D);
         }
@@ -137,8 +137,6 @@ void initialCond(void){
     fprintf(file, "\ty_coordiate: %d", B.position.y);
 
     for(int i = 0; i < N; i++){
-
-        E[i]->angMax = E[i]->angMin + E[i]->angRng
         fprintf(file, "ESCORT_SHIP_%d's Details:\n", i);
         fprintf(file, "vMax_e: %d\n", E[i].vMax);
         fprintf(file, "vMin_e: %d\n", E[i].vMin);
@@ -149,6 +147,6 @@ void initialCond(void){
         fprintf(file, "y_coordiate: %d", E[i].position.y);
     }
 
-    free();
+    free(E);
     fclose(file);
 }
