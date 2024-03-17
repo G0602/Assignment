@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "random.h"
+#include "../random/random.h"
 #include "initial.h"
 
 //definig the location of the ships
