@@ -147,7 +147,7 @@ void initialCond(void){
     fprintf(file, "\ty_coordiate: %d\n\n", B.position.y);
 
     for(int i = 0; i < N; i++){
-        fprintf(file, "ESCORT_SHIP_%d's Details:\n", i);
+        fprintf(file, "ESCORT_SHIP_%d's Details:\n", i + 1);
         fprintf(file, "\tvMax_e: %d\n", E[i].vMax);
         fprintf(file, "\tvMin_e: %d\n", E[i].vMin);
         fprintf(file, "\ttype_e: %c\n", E[i].type);
