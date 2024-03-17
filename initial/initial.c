@@ -7,10 +7,6 @@
 //function to get the initial condition and save it in a text file called initial.txt
 void initialCond(void){
 
-    int N,D;// N is for the number of escort ship and D is for the size of the battle field
-    btlShp B;
-    escShp *E;
-
     FILE *file = fopen("initial.txt", "w");
     if (file == NULL) {
         printf("Error opening/creating the file initial.txt.\n");
@@ -52,9 +48,6 @@ void initialCond(void){
     }*/
 
     {
-        // Default values for D,N
-        D = 100;
-        N = 10;
 
         E = (escShp*) malloc(N * sizeof(escShp));
 
