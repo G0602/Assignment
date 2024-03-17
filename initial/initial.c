@@ -138,23 +138,23 @@ void initialCond(void){
     }
    
     fprintf(file, "canvasSize(D): %d\n", D);
-    fprintf(file, "escortNum: %d\n", N);
+    fprintf(file, "escortNum: %d\n\n", N);
 
     fprintf(file, "BATTLE_SHIP's Details:\n");
     fprintf(file, "\tvMax_b: %d\n", B.vMax);
     fprintf(file, "\ttype_b: %c\n", B.type);
-    fprintf(file, "\tx_coordiate: %d", B.position.x);
-    fprintf(file, "\ty_coordiate: %d", B.position.y);
+    fprintf(file, "\tx_coordiate: %d\n", B.position.x);
+    fprintf(file, "\ty_coordiate: %d\n\n", B.position.y);
 
     for(int i = 0; i < N; i++){
         fprintf(file, "ESCORT_SHIP_%d's Details:\n", i);
-        fprintf(file, "vMax_e: %d\n", E[i].vMax);
-        fprintf(file, "vMin_e: %d\n", E[i].vMin);
-        fprintf(file, "type_e: %c\n", E[i].type);
-        fprintf(file, "angMin: %d\n", E[i].angMin);
-        fprintf(file, "angMax: %d\n", E[i].angMax);
-        fprintf(file, "x_coordiate: %d", E[i].position.x);
-        fprintf(file, "y_coordiate: %d", E[i].position.y);
+        fprintf(file, "\tvMax_e: %d\n", E[i].vMax);
+        fprintf(file, "\tvMin_e: %d\n", E[i].vMin);
+        fprintf(file, "\ttype_e: %c\n", E[i].type);
+        fprintf(file, "\tangMin: %d\n", E[i].angMin);
+        fprintf(file, "\tangMax: %d\n", E[i].angMax);
+        fprintf(file, "\tx_coordiate: %d\n", E[i].position.x);
+        fprintf(file, "\ty_coordiate: %d\n\n", E[i].position.y);
     }
 
     free(E);
