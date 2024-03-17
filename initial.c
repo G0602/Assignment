@@ -19,18 +19,19 @@ typedef struct {
 // defining the structure of the  battle ships
 typedef struct {
     point position;
-    char type;
-    float vMax;
+    char type;// type of B
+    int vMax;
 } btlShp;
 
 // defining the structure of the  escort ships
 typedef struct {
 point position;
     char type;
-    float vMax;
-    float vMin;
-    float angMax;
-    float angMin;
+    int angRng;//angle range
+    int vMax;
+    int vMin;
+    int angMax;
+    int angMin;
 } escShp;
 
 //function to get the initial condition and save it in a text file called initial.txt
@@ -52,7 +53,7 @@ void initialCond(void){
     printf("Enter the number of the escort ships you want to have in this simulation: ");
     scanf("%d", &N);
 
-    E = (int*) malloc(N * sizeof(escShp));
+    E = (escShp*) malloc(N * sizeof(escShp));
 
     // error handeling
     if (E == NULL) {
@@ -60,33 +61,94 @@ void initialCond(void){
         return; 
     }
     
+    //i want to add a if condition to select whether the user want to inpu the values or get random values.
+    /*{
     printf("Enter the maximum velocity of the escort ships: ");
-    scanf("%f", &E.vMax);
+    scanf("%d", &E.vMax);
     
     printf("Enter the minimun velocity of the escort ships: ");
-    scanf("%f", &E.vMin);
+    scanf("%d", &E.vMin);
 
     printf("Enter the minimum angle of the escort ships: ");
-    scanf("%f", &E.angMin);
+    scanf("%d", &E.angMin);
 
     printf("Enter the maximum velocity of the battle ship: ");
-    scanf("%f", &B.vMax);
+    scanf("%d", &B.vMax);
 
     printf("Enter the type of the battle ship you want to observe: ");
     scanf("%c", &B.type);
+    }*/
 
+    {
+        // Default values for D,N
+        D = 100;
+        N = 10;
 
+        //randomly generted values for B's properties
+        B.vMax = ranNum(0,100);
+        switch(ranNum(0,3);){
+            case 0: B.type = U;
+                    break;
+            case 1: B.type = M;
+                    break;
+            case 2: B.type = R;
+                    break;
+            case 3: B.type = S;
+                    break;
+        }
+        B.position.x=ranNum(0,D);
+        B.position.y=ranNum(0,D);
+
+        //randomly generted values for Es' properties
+        for(int i = 0; i < N; i++){
+            E[i].vMax = ranNum(2 ,100);
+            E[i].vMin = ranNum(0 ,E[i].vMax - 1);
+            switch(ranNum(0,4);){
+            case 0: E[i].type = A;
+                    E[i].angRange = 20;
+                    break;
+            case 1: E[i].type = B;
+                    E[i].angRange = 30;
+                    break;
+            case 2: E[i].type = C;
+                    E[i].angRange = 25;
+                    break;
+            case 3: E[i].type = D;
+                    E[i].angRange = 50;
+                    break;
+            case 4: E[i].type = E;
+                    E[i].angRange = 70;
+                    break;
+            }
+            E[i].angMin = ranNum(0, 90 - E[i].angRng);
+            E[i].angMax = E[i].angMin + E[i].angRng;
+            E[i].position.x=ranNum(0,D);
+            E[i].position.y=ranNum(0,D);
+        }
+    }
+   
     fprintf(file, "canvasSize(D): %d\n", D);
     fprintf(file, "escortNum: %d\n", N);
 
-    fprintf(file, "vMax_b: %.2f\n", B.vMAx);
-    fprintf(file, "type_b: %c\n", B.type);
+    fprintf(file, "BATTLE_SHIP's Details:\n");
+    fprintf(file, "\tvMax_b: %d\n", B.vMax);
+    fprintf(file, "\ttype_b: %c\n", B.type);
+    fprintf(file, "\tx_coordiate: %d", B.position.x);
+    fprintf(file, "\ty_coordiate: %d", B.position.y);
 
-    fprintf(file, "vMax_e: %.2f\n", E.vMax);
-    fprintf(file, "vMin_e: %.2f\n", E.vMin);
-    fprintf(file, "angMin: %.2f\n", E.angMin);
-    //fprintf(file, "angMax: %.2f\n", E.angMin + //need to figure oute);
+    for(int i = 0; i < N; i++){
 
+        E[i]->angMax = E[i]->angMin + E[i]->angRng
+        fprintf(file, "ESCORT_SHIP_%d's Details:\n", i);
+        fprintf(file, "vMax_e: %d\n", E[i].vMax);
+        fprintf(file, "vMin_e: %d\n", E[i].vMin);
+        fprintf(file, "type_e: %c\n", E[i].type);
+        fprintf(file, "angMin: %d\n", E[i].angMin);
+        fprintf(file, "angMax: %d\n", E[i].angMax);
+        fprintf(file, "x_coordiate: %d", E[i].position.x);
+        fprintf(file, "y_coordiate: %d", E[i].position.y);
+    }
 
+    free();
     fclose(file);
 }
