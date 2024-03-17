@@ -8,12 +8,12 @@
 typedef struct {
     int x;
     int y;
-} point;
+} Point;
 
 typedef struct {
     int max;
     int min;
-} Range;
+} Minmax;
 
 typedef struct {
    
@@ -23,7 +23,7 @@ typedef struct {
 
 // defining the structure of the  battle ships
 typedef struct {
-    point position;// coordinate of the B in the canvas
+    Point position;// coordinate of the B in the canvas
     char type;// type of B
     int vMax;
     bool status;//if sgttus is 1 the ship is fine if it's 0 the the ship is destroyed
@@ -31,14 +31,14 @@ typedef struct {
 
 // defining the structure of the  escort ships
 typedef struct {
-    point position;// coordinate of the E in the canvas
+    Point position;// coordinate of the E in the canvas
     char type; // type of the E
     int vMax;
     int vMin;
     int angRange; //the vertical range of the E
     int angMax;
     int angMin;
-    Range range;
+    Minmax range;
     float dist;// distance from the B
     bool status;//if status is 1 the ship is fine if it's 0 the the ship is destroyed
     char indexNum[7];// for the unique ship identifiyer
