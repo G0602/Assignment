@@ -11,6 +11,6 @@ escShp *E;
 int main(){
 
     initialCond();
-
+    battle();
     return 0;
 }
