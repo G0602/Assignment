@@ -10,6 +10,10 @@ typedef struct {
     int y;
 } point;
 
+typedef struct {
+    int max;
+    int min;
+} Range;
 
 typedef struct {
    
@@ -29,11 +33,12 @@ typedef struct {
 typedef struct {
     point position;// coordinate of the E in the canvas
     char type; // type of the E
-    int angRange; //the vertical range of the E
     int vMax;
     int vMin;
+    int angRange; //the vertical range of the E
     int angMax;
     int angMin;
+    Range range;
     float dist;// distance from the B
     bool status;//if status is 1 the ship is fine if it's 0 the the ship is destroyed
     char indexNum[7];// for the unique ship identifiyer
