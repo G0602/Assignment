@@ -46,12 +46,16 @@ void initialCond(void){
         printf("Error opening/creating the file initial.txt.\n");
     }
 
+    
+    //i want to add a if condition to select whether the user want to inpu the values or get random values.
+    /*{
 
     printf("Enter the size of the battle field: ");
     scanf("%d", &D);
 
     printf("Enter the number of the escort ships you want to have in this simulation: ");
     scanf("%d", &N);
+
 
     E = (escShp*) malloc(N * sizeof(escShp));
 
@@ -61,8 +65,6 @@ void initialCond(void){
         return; 
     }
     
-    //i want to add a if condition to select whether the user want to inpu the values or get random values.
-    /*{
     printf("Enter the maximum velocity of the escort ships: ");
     scanf("%d", &E.vMax);
     
@@ -83,6 +85,14 @@ void initialCond(void){
         // Default values for D,N
         D = 100;
         N = 10;
+
+        E = (escShp*) malloc(N * sizeof(escShp));
+
+        // error handeling
+        if (E == NULL) {
+            printf("Memory allocation failed!\n");
+            return; 
+        }
 
         //randomly generted values for B's properties
         B.vMax = ranNum(0,100);
