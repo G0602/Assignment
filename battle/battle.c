@@ -14,7 +14,7 @@ int battle(void){
 
     for(int i = 0; i < N; i++){
     E[i].dist = distCalc(i);
-    printf("%d- %f \n", i+1, E[i].dist);
+    printf("The distance between B and %s is -> %f \n", E[i].indexNum, E[i].dist);
     }
     
     //fclose(file);
