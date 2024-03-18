@@ -126,6 +126,5 @@ void initialCond(void){
         fprintf(file, "\tMinimum_Angle_of_the_Gun: %d'\n\n", E[i].angMin);
     }
 
-    free(E);
     fclose(file);
 }
