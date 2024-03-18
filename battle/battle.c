@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include"../glbl_vars.h"
 #include "battle.h"
+#include "../initial/initial.h"
 
 const float g = 9.80665;
 
@@ -17,7 +18,7 @@ int battle(void){
     for(int i = 0; i < N; i++){
         rangeMinMax(i);
         E[i].dist = distCalc(i);
-        printf("The distance between B and %s is -> %.2fkm \n And the maximum and the minimum range are %.2fkm,%.2fkm\n\n", E[i].indexNum, E[i].dist, E[i].range.max, E[i].range.min);
+        canEAtk(i);
     }
     
     //fclose(file);
@@ -52,4 +53,17 @@ float distCalc(int i){
 //this is a function to calculate the distance travelde by the shell using the angle of the gun and the initial velocity of the shell
 float rangeF(int a, int v){
     return ((pow(v, 2)*sin(2 * a * (M_PI / 180.0)))/(g * 1000)); // this will give the range in kilo meters
+}
+
+
+//this function check whether the E can attack B
+void canEAtk(int i){
+
+    if((E[i].dist <= E[i].range.max) && (E[i].dist >= E[i].range.min)){
+        if(B.status == 1){
+            printf("B is destroyed.\nIt has been attcked by following ships:\n");
+            B.status = 0;
+        }
+        printf("%s\n", E[i].indexNum);
+    }
 }
