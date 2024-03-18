@@ -11,8 +11,8 @@ typedef struct {
 } Point;
 
 typedef struct {
-    int max;
-    int min;
+    float max;
+    float min;
 } Minmax;
 
 // defining the structure of the  battle ships
