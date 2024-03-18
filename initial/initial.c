@@ -107,13 +107,13 @@ void initialCond(void){
         }
     }
    
-    fprintf(file, "canvasSize(D): %d\n", D);
+    fprintf(file, "canvasSize(D): %d km\n", D);
     fprintf(file, "escortNum: %d\n\n", N);
 
     fprintf(file, "BATTLE_SHIP's Details:\n");
-    fprintf(file, "\tMaximum_Shell_velocity: %d\n", B.vMax);
+    fprintf(file, "\tMaximum_Shell_velocity: %d m/s\n", B.vMax);
     fprintf(file, "\ttype: %c\n", B.type);
-    fprintf(file, "\tcoordiate: (%d,%d)\n\n", B.position.x, B.position.y);
+    fprintf(file, "\tcoordiate: ( %d, %d)\n\n", B.position.x, B.position.y);
 
     for(int i = 0; i < N; i++){
         fprintf(file, "ESCORT_SHIP_%d's Details:\n", i + 1);
