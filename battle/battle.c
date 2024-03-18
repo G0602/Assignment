@@ -9,13 +9,19 @@ int kill = 0;//to show how many Es' has been destroyed by B
 float time = 0;// total time to complete B's attacks
 
 int battle(void){
-    /*
-    FILE *file = fopen("initial.txt", "r");
-    if (file == NULL) {
-        printf("Error opening the file initial.txt.\n");
+    
+    FILE *file1 = fopen("destruction.txt", "w");
+    if (file1 == NULL) {
+        printf("Error opening the file destruction.txt.\n");
         return 1;
     }
-    */
+
+    FILE *file2 = fopen("finale.txt", "w");
+    if (file2 == NULL) {
+        printf("Error opening the file finale.txt.\n");
+        return 1;
+    }
+    
     B.range.min= 0;
     B.range.max= rangeF(45, B.vMax);
 
@@ -23,12 +29,21 @@ int battle(void){
         rangeMinMax(i);
         E[i].dist = distCalc(i);
         canEAtk(i);
-        if (B.status == 1){
-            canBAtk (i);
-        }
     }
     
-    //fclose(file);
+    if (B.status == 1){
+        for(int i = 0; i < N; i++){
+            canBAtk (i, file1);
+        }
+        printf("Currently there are no Es in the range of B.\nTotal number of Es got destroyed is %d.\nTotal time took to finish the battle is %.2fs.\n", kill, time);
+        fprintf(file1, "Currently there are no Es in the range of B.\nTotal number of Es got destroyed is %d.\nTotal time took to finish the battle is %.2fs.\n", kill, time);
+    }
+
+
+    prntDtl(file2);
+
+    fclose(file1);
+    fclose(file2);
 
     return 0;
 }
@@ -62,9 +77,9 @@ float rangeF(int a, int v){
     return ((pow(v, 2)*sin(2 * a * (M_PI / 180.0)))/(g * 1000)); // this will give the range in kilo meters
 }
 
-//this a function to calculate the time to shell reach E
+//this a function to calculate the time to shell reach E in seconds
 float atkTime(int i){
-    return ((2 * B.vMax * sin(0.5 * asin((E[i].dist * g)/pow(B.vMax, 2))))/g);
+    return ((2 * B.vMax * sin(0.5 * asin((E[i].dist * 1000 * g)/pow(B.vMax, 2))))/g);
 }
 
 
@@ -81,15 +96,17 @@ void canEAtk(int i){
 }
 
 //this function check whether the B can attack E
-void canBAtk(int i){
+void canBAtk(int i, FILE *file){
     if(E[i].dist <= B.range.max){
         if (kill == 0){ 
             printf("Following ships has been destroyed by B:\n");
+            fprintf(file, "Following ships has been destroyed by B:\n");
         }
         E[i].status = 0;
         kill++;
         time += atkTime(i);
         E[i].status = 0;
         printf("%s\n", E[i].indexNum);
+        fprintf(file, "%s\n", E[i].indexNum);
     }
 }
