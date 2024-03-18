@@ -74,8 +74,6 @@ void initialCond(void){
 
         //randomly generted values for Es' properties
         for(int i = 0; i < N; i++){
-            E[i].vMax = ranNum(2 ,100);
-            E[i].vMin = ranNum(0 ,E[i].vMax - 1);
             switch(ranNum(0,4)){
             case 0: E[i].type = 'A';
                     E[i].angRange = 20;
@@ -93,6 +91,14 @@ void initialCond(void){
                     E[i].angRange = 70;
                     break;
             }
+
+            if(E[i].type == 'A'){
+                E[i].vMax = ranNum(2 ,1.2*B.vMax);
+            } else {
+                E[i].vMax = ranNum(2 ,B.vMax);
+            }
+        
+            E[i].vMin = ranNum(0 ,E[i].vMax - 1);
             E[i].angMin = ranNum(0, 90 - E[i].angRange);
             E[i].angMax = E[i].angMin + E[i].angRange;
             E[i].position.x = ranNum(0,D);
