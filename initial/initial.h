@@ -4,6 +4,5 @@
 #include <stdio.h>
 
 void initialCond(void);
-void prntDtl(FILE *file);
 
 #endif

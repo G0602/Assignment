@@ -46,4 +46,7 @@ extern btlShp B; //B is to indicate the battle ship
 extern escShp *E; //an escShp class pointer to be used as a pointer
 
 
+void prntDtl(FILE *file);
+
+
 #endif
