@@ -15,7 +15,7 @@ int battle(void){
     */
 
     for(int i = 0; i < N; i++){
-        range(i);
+        rangeMinMax(i);
         E[i].dist = distCalc(i);
         printf("The distance between B and %s is -> %.2fkm \n And the maximum and the minimum range are %.2fkm,%.2fkm\n\n", E[i].indexNum, E[i].dist, E[i].range.max, E[i].range.min);
     }
@@ -26,8 +26,16 @@ int battle(void){
 }
 
 // this function uses the rangeF function to figure out the maximum and the minimum range of E
-void range(int i){
-    if(fabs(E[i].angMax-45) < (E[i].angMin-45)){
+void rangeMinMax(int i){
+
+    if((E[i].angMax >= 45) && (E[i].angMin <= 45)){
+        E[i].range.max= rangeF(45, E[i].vMax);
+        if(fabs(E[i].angMax-45) < fabs(E[i].angMin-45)){
+            E[i].range.min= rangeF(E[i].angMin, E[i].vMin);
+        } else {
+            E[i].range.min= rangeF(E[i].angMax, E[i].vMin);
+        }
+    } else if(fabs(E[i].angMax-45) < fabs(E[i].angMin-45)){
         E[i].range.max= rangeF(E[i].angMax, E[i].vMax);
         E[i].range.min= rangeF(E[i].angMin, E[i].vMin);
     } else {
