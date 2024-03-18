@@ -58,7 +58,7 @@ void initialCond(void){
         }
 
         //randomly generted values for B's properties
-        B.vMax = ranNum(0,100);
+        B.vMax = ranNum(180,200);
         switch(ranNum(0,3)){
             case 0: B.type = 'U';
                     break;
@@ -93,12 +93,12 @@ void initialCond(void){
             }
 
             if(E[i].type == 'A'){
-                E[i].vMax = ranNum(2 ,1.2*B.vMax);
+                E[i].vMax = ranNum(100 ,1.2*B.vMax);
             } else {
-                E[i].vMax = ranNum(2 ,B.vMax);
+                E[i].vMax = ranNum(100 ,B.vMax);
             }
         
-            E[i].vMin = ranNum(0 ,E[i].vMax - 1);
+            E[i].vMin = ranNum(10 ,E[i].vMax);
             E[i].angMin = ranNum(0, 90 - E[i].angRange);
             E[i].angMax = E[i].angMin + E[i].angRange;
             E[i].position.x = ranNum(0,D);
@@ -111,7 +111,7 @@ void initialCond(void){
     fprintf(file, "escortNum: %d\n\n", N);
 
     fprintf(file, "BATTLE_SHIP's Details:\n");
-    fprintf(file, "\tvMax: %d\n", B.vMax);
+    fprintf(file, "\tMaximum_Shell_velocity: %d\n", B.vMax);
     fprintf(file, "\ttype: %c\n", B.type);
     fprintf(file, "\tcoordiate: (%d,%d)\n\n", B.position.x, B.position.y);
 
@@ -120,10 +120,10 @@ void initialCond(void){
         fprintf(file, "\ttype: %c\n", E[i].type);
         fprintf(file, "\tindex_number: %s\n", E[i].indexNum);
         fprintf(file, "\tcoordiate: (%d,%d)\n", E[i].position.x, E[i].position.y);
-        fprintf(file, "\tvMax: %d\n", E[i].vMax);
-        fprintf(file, "\tvMin: %d\n", E[i].vMin);
-        fprintf(file, "\tangMin: %d\n", E[i].angMin);
-        fprintf(file, "\tangMax: %d\n\n", E[i].angMax);
+        fprintf(file, "\tMaximum_Shell_velocity: %d\n", E[i].vMax);
+        fprintf(file, "\tMinimum_Shell_velocity: %d\n", E[i].vMin);
+        fprintf(file, "\tMaximum_Angle_of_the_Gun: %d\n", E[i].angMax);
+        fprintf(file, "\tMinimum_Angle_of_the_Gun: %d\n\n", E[i].angMin);
     }
 
     free(E);
