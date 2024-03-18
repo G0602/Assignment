@@ -15,17 +15,11 @@ typedef struct {
     int min;
 } Minmax;
 
-typedef struct {
-   
-// i'm planig to define a structure called type here
-
-} Type;
-
 // defining the structure of the  battle ships
 typedef struct {
     Point position;// coordinate of the B in the canvas
     char type;// type of B
-    int vMax;
+    int vMax;// maximum velocity of B's shell
     bool status;//if sgttus is 1 the ship is fine if it's 0 the the ship is destroyed
 } btlShp;
 
@@ -33,12 +27,12 @@ typedef struct {
 typedef struct {
     Point position;// coordinate of the E in the canvas
     char type; // type of the E
-    int vMax;
-    int vMin;
+    int vMax;// maximum velocity of E's shell
+    int vMin;// minimum velocity of E's shell
     int angRange; //the vertical range of the E
-    int angMax;
-    int angMin;
-    Minmax range;
+    int angMax;// maximum angle of E's gun
+    int angMin;// minimum angle of E's gun
+    Minmax range; // attack range of E
     float dist;// distance from the B
     bool status;//if status is 1 the ship is fine if it's 0 the the ship is destroyed
     char indexNum[7];// for the unique ship identifiyer
