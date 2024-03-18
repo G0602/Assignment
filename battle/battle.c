@@ -17,7 +17,7 @@ int battle(void){
     for(int i = 0; i < N; i++){
         range(i);
         E[i].dist = distCalc(i);
-        printf("The distance between B and %s is -> %.2f \n And the maximum and the minimum range are %.2f,%.2f\n\n", E[i].indexNum, E[i].dist, E[i].range.max, E[i].range.min);
+        printf("The distance between B and %s is -> %.2fkm \n And the maximum and the minimum range are %.2fkm,%.2fkm\n\n", E[i].indexNum, E[i].dist, E[i].range.max, E[i].range.min);
     }
     
     //fclose(file);
@@ -43,5 +43,5 @@ float distCalc(int i){
 
 //this is a function to calculate the distance travelde by the shell using the angle of the gun and the initial velocity of the shell
 float rangeF(int a, int v){
-    return (float)(pow(v, 2)*sin(2 * a * (M_PI / 180.0)))/g;
+    return (pow(v, 2)*sin(2 * a * (M_PI / 180.0)))/(g * 1000); // this will give the range in kilo meters
 }

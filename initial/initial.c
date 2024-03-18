@@ -120,10 +120,10 @@ void initialCond(void){
         fprintf(file, "\ttype: %c\n", E[i].type);
         fprintf(file, "\tindex_number: %s\n", E[i].indexNum);
         fprintf(file, "\tcoordiate: (%d,%d)\n", E[i].position.x, E[i].position.y);
-        fprintf(file, "\tMaximum_Shell_velocity: %d\n", E[i].vMax);
-        fprintf(file, "\tMinimum_Shell_velocity: %d\n", E[i].vMin);
-        fprintf(file, "\tMaximum_Angle_of_the_Gun: %d\n", E[i].angMax);
-        fprintf(file, "\tMinimum_Angle_of_the_Gun: %d\n\n", E[i].angMin);
+        fprintf(file, "\tMaximum_Shell_velocity: %d m/s\n", E[i].vMax);
+        fprintf(file, "\tMinimum_Shell_velocity: %d m/s\n", E[i].vMin);
+        fprintf(file, "\tMaximum_Angle_of_the_Gun: %d'\n", E[i].angMax);
+        fprintf(file, "\tMinimum_Angle_of_the_Gun: %d'\n\n", E[i].angMin);
     }
 
     free(E);
