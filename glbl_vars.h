@@ -19,6 +19,7 @@ typedef struct {
 typedef struct {
     Point position;// coordinate of the B in the canvas
     char type;// type of B
+    Minmax range; // attack range of B, in kilo meter
     int vMax;// maximum velocity of B's shell, will be in meter per second
     bool status;//if sgttus is 1 the ship is fine if it's 0 the the ship is destroyed
 } btlShp;
