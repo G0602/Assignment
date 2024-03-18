@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include "initial/initial.h"
 #include "battle/battle.h"
 #include "glbl_vars.h"
@@ -9,8 +10,12 @@ btlShp B;
 escShp *E;
 
 int main(){
+    E = (escShp*) malloc(N * sizeof(escShp));
 
     initialCond();
     battle();
+
+    free(E);
+
     return 0;
 }

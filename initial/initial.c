@@ -49,8 +49,6 @@ void initialCond(void){
 
     {
 
-        E = (escShp*) malloc(N * sizeof(escShp));
-
         // error handeling
         if (E == NULL) {
             printf("Memory allocation failed!\n");
