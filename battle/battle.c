@@ -17,7 +17,7 @@ int battle(void){
     for(int i = 0; i < N; i++){
         range(i);
         E[i].dist = distCalc(i);
-        printf("The distance between B and %s is -> %.2f \n And the maximum and the minimum range are %d,%d\n\n", E[i].indexNum, E[i].dist, E[i].range.max, E[i].range.min);
+        printf("The distance between B and %s is -> %.2f \n And the maximum and the minimum range are %.2f,%.2f\n\n", E[i].indexNum, E[i].dist, E[i].range.max, E[i].range.min);
     }
     
     //fclose(file);
