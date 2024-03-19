@@ -2,6 +2,7 @@
 #include "initial/initial.h"
 #include "battle/battle.h"
 #include "glbl_vars.h"
+#include "canvas/canvas.h"
 
 // defining following variables to be used in all other files and function
 int D = 10;// Default value for D
@@ -12,17 +13,26 @@ escShp *E;
 Movement *move;
 
 int main(){
+    int iteration=0; // the number of times the battle has happend
     E = (escShp*) malloc(N * sizeof(escShp));
     move = (Movement*) malloc(k * sizeof(Movement));
 
     initialCond();
-    int iteration=0; // the number of times the battle has happend
-    //do{
-        battle();
+    location();
+    do{
+        battle(iteration + 1);
+        motion();
         iteration++;
-    //} while((iteration < k) && (B.status == 1))
+    } while((iteration < k) && (B.status == 1));
+
+    if((iteration == k) && (B.status == 1)){
+        printf("The Battle ship survived all iterations.\n");
+    }
+
+    printf("%d\n", iteration);
 
     free(E);
+    free(move);
 
     return 0;
 }
