@@ -100,11 +100,12 @@ float atkTime(int i){
 void canEAtk(int i){
 
     if((E[i].dist <= E[i].range.max) && (E[i].dist >= E[i].range.min)){
-        if(B.status == 1){
-            printf("B is destroyed.\nIt has been attcked by following ships:\n");
+        B.hp -= E[i].ip;
+        if(B.hp <= 0){
+            printf("B is destroyed due to its durability reaching 0.\n");
             B.status = 0;
         }
-        printf("%s\n", E[i].indexNum);
+        printf("B has been attcked by:%s and lost %d%% of its durability.\n", E[i].indexNum, E[i].ip);
     }
 }
 

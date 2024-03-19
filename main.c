@@ -44,7 +44,8 @@ void prntDtl(FILE *file){
 
     fprintf(file, "BATTLE_SHIP's Details:\n");
     fprintf(file, "\tMaximum_Shell_velocity: %d m/s\n", B.vMax);
-    fprintf(file, "\ttype: %c\n", B.type);
+    fprintf(file, "\tType: %c\n", B.type);
+    fprintf(file, "\tDurability: %d%%\n", B.hp);
     if(B.status == 1){
         fprintf(file, "\tstatus: %s\n", "Available");
     } else {
@@ -56,7 +57,8 @@ void prntDtl(FILE *file){
 
     for(int i = 0; i < N; i++){
         fprintf(file, "ESCORT_SHIP_%d's Details:\n", i + 1);
-        fprintf(file, "\ttype: %c\n", E[i].type);
+        fprintf(file, "\tType: %c\n", E[i].type);
+        fprintf(file, "\tImpact_power: %.2f\n", (float)(E[i].type/100));
         if(E[i].status == 1){
             fprintf(file, "\tstatus: %s\n", "Available");
         } else {

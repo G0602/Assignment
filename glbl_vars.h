@@ -32,7 +32,8 @@ typedef struct {
     int vMax;// maximum velocity of B's shell, will be in meter per second
     int angMax;// maximum angle of B's gun, in degree
     int angMin;// minimum angle of B's gun, in degree
-    bool status;//if sgttus is 1 the ship is fine if it's 0 the the ship is destroyed
+    bool status;//if status is 1 the ship is fine if it's 0 the the ship is destroyed
+    int hp; // this indicates the health of the B. if this hits 0 that means the  ship has been destroyed
 } btlShp;
 
 // defining the structure of the  escort ships
@@ -47,6 +48,7 @@ typedef struct {
     Minmax range; // attack range of E, in kilo meter
     float dist;// distance from the B
     bool status;//if status is 1 the ship is fine if it's 0 the the ship is destroyed
+    int ip; // this idicates the impact power of the E. if E hits B this value will redused from hp
     char indexNum[7];// for the unique ship identifiyer
 } escShp;
 

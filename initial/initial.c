@@ -71,6 +71,7 @@ void initialCond(void){
         }
         B.position.x = ranNum(0,D);
         B.position.y = ranNum(0,D);
+        B.hp = 100;
         B.status = 1;
 
         //randomly generted values for Es' properties
@@ -79,18 +80,23 @@ void initialCond(void){
             switch(ranNum(0,4)){
             case 0: E[i].type = 'A';
                     E[i].angRange = 20;
+                    E[i].ip = 8;
                     break;
             case 1: E[i].type = 'B';
                     E[i].angRange = 30;
+                    E[i].ip = 6;
                     break;
             case 2: E[i].type = 'C';
                     E[i].angRange = 25;
+                    E[i].ip = 7;
                     break;
             case 3: E[i].type = 'D';
                     E[i].angRange = 50;
+                    E[i].ip = 5;
                     break;
             case 4: E[i].type = 'E';
                     E[i].angRange = 70;
+                    E[i].ip = 4;
                     break;
             }
 
