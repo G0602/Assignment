@@ -41,6 +41,7 @@ void location(int k){
     for(int i = 0;i < k; i++){
         move[i].position.x = ranNum(0,D);
         move[i].position.y = ranNum(0,D);
+        move[i].visit = 0;
     }
 }
 
@@ -49,8 +50,21 @@ float distCalc(int x1, int y1, int x2, int y2){
     return sqrt(pow((x1 - x2),2) + pow((y1 - y2),2));
 }
 
-void chose(){
+int chose(int k){
+    int minDist = -1;
+    for(int i = 0;i < k; i++){
+        if(move[i].visit == 0){
+            if(minDist == -1){
+                minDist = i;
+            }
+            move[i].dist = distCalc(B.position.x, B.position.y, move[i].position.x, move[i].position.y);
+            if (move[minDist].dist > move[i].dist){
+                minDist = i;
+            }
+        }
+    }
 
+    return minDist;
 }
 
 void motion(){
