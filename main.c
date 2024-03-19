@@ -29,7 +29,6 @@ int main(){
         printf("The Battle ship survived all iterations.\n");
     }
 
-    printf("%d\n", iteration);
 
     free(E);
     free(move);
