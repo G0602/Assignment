@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "glbl_vars.h"
-#include "random.h"
-
-
+#include <math.h>
+#include "../glbl_vars.h"
+#include "../random/random.h"
 
 /*
 int canvas() {
@@ -40,8 +39,8 @@ int canvas() {
 
 void location(int k){
     for(int i = 0;i < k; i++){
-        movement[i].position.x = ranNum(0,D);
-        movement[i].position.y = ranNum(0,D);
+        move[i].position.x = ranNum(0,D);
+        move[i].position.y = ranNum(0,D);
     }
 }
 
@@ -54,6 +53,6 @@ void chose(){
 
 }
 
-void move(){
+void motion(){
 
 }
