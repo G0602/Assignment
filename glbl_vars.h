@@ -28,6 +28,7 @@ typedef struct {
     Point position;// coordinate of the B in the canvas
     char type;// type of B
     Minmax range; // attack range of B, in kilo meter
+    float maxVelMinRng; // minimum distance where B can fire at maximum shell velocity
     int vMax;// maximum velocity of B's shell, will be in meter per second
     int angMax;// maximum angle of B's gun, in degree
     int angMin;// minimum angle of B's gun, in degree

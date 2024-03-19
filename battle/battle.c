@@ -1,6 +1,7 @@
 #include <math.h>
 #include <stdio.h>
-#include"../glbl_vars.h"
+#include "../random/random.h"
+#include "../glbl_vars.h"
 #include "battle.h"
 #include "../initial/initial.h"
 #include "../canvas/canvas.h"
@@ -27,6 +28,10 @@ int battle(int it){
     
     B.range.min= 0;
     B.range.max= rangeF(45, B.vMax);
+    if(it >= t && B.maxVelMinRng == 0){// only true if current itteration is greater than or equal to t and value for maxVelMinRng isn't previously assigned
+        B.angMin= ranNum(0,30);
+        B.maxVelMinRng = rangeF(B.range.min, B.vMax);
+    } 
 
     printf("Current itteration no.%d:\nCurrent location(%d, %d).\n", it, B.position.x, B.position.y);
     fprintf(file1, "Current itteration no.%d:\n", it);
@@ -84,7 +89,10 @@ float rangeF(int a, int v){
 
 //this a function to calculate the time to shell reach E in seconds
 float atkTime(int i){
-    return ((2 * B.vMax * sin(0.5 * asin((E[i].dist * 1000 * g)/pow(B.vMax, 2))))/g);
+    if(E[i].dist < B.maxVelMinRng)
+        return pow(((( E[i].dist * pow(3, 0.5)) / pow(g, 3) * 2)),0.5);
+    else
+        return ((2 * B.vMax * sin(0.5 * asin((E[i].dist * 1000 * g)/pow(B.vMax, 2))))/g);
 }
 
 
