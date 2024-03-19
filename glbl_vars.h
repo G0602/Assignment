@@ -5,11 +5,18 @@
 
 #include <stdbool.h>
 
-//definig the location in the canvas
+//definig a location in the canvas
 typedef struct {
     int x;
     int y;
 } Point;
+
+//definig a location where B needs to move in the future
+typedef struct {
+    float dist;
+    Point position;
+    bool visit;
+} Movement;
 
 typedef struct {
     float max;
@@ -46,7 +53,7 @@ extern int D; // D is for the size of the battle field, in kilo meter
 extern btlShp B; //B is to indicate the battle ship
 extern escShp *E; //an escShp class pointer to store the memory address of escort ship structure
 
-extern Point *movement;// pointer to store the memory adress of the location where B needs to move
+extern Movement *move;// pointer to store the memory adress of the location where B needs to move
 
 extern void prntDtl(FILE *file);
 

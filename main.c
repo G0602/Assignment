@@ -6,11 +6,14 @@
 // defining following variables to be used in all other files and function
 int D = 10;// Default values for D
 int N = 10;// Default values for N
+int k = 10;// k is for the number of locations B need to move
 btlShp B;
 escShp *E;
+Movement *move;
 
 int main(){
     E = (escShp*) malloc(N * sizeof(escShp));
+    move = (Movement*) malloc(k * sizeof(Movement));
 
     initialCond();
     battle();
