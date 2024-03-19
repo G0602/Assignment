@@ -7,20 +7,20 @@
 
 //definig a location in the canvas
 typedef struct {
-    int x;
-    int y;
+    int x;// x coordinate in the canvas
+    int y;// y coordinate in the canvas
 } Point;
 
 //definig a location where B needs to move in the future
 typedef struct {
-    float dist;
-    Point position;
-    bool visit;
+    float dist; //distance from B's current location
+    Point position; // position in the canvas
+    bool visit;// tells about whether B already visited or not
 } Movement;
 
 typedef struct {
-    float max;
-    float min;
+    float max; // to store the max value
+    float min; // to store the min value
 } Minmax;
 
 // defining the structure of the  battle ships
@@ -55,7 +55,7 @@ extern escShp *E; //an escShp class pointer to store the memory address of escor
 
 extern Movement *move;// pointer to store the memory adress of the location where B needs to move
 
-extern void prntDtl(FILE *file);
+extern void prntDtl(FILE *file);// defined in main.c
 
 
 #endif
