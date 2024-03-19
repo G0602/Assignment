@@ -49,6 +49,7 @@ typedef struct {
 
 extern int N; // N is for the number of escort ships
 extern int D; // D is for the size of the battle field, in kilo meter
+extern int k; // k is for the number of locations B need to move
 
 extern btlShp B; //B is to indicate the battle ship
 extern escShp *E; //an escShp class pointer to store the memory address of escort ship structure

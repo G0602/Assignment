@@ -38,7 +38,7 @@ int canvas() {
 */
 
 // this function generate k number of random loctions and set their status to non visited
-void location(int k){
+void location(){
     for(int i = 0;i < k; i++){
         move[i].position.x = ranNum(0,D);
         move[i].position.y = ranNum(0,D);
@@ -52,7 +52,7 @@ float distCalc(int x1, int y1, int x2, int y2){
 }
 
 //this function chose the closest location among the non visited ones from the current location
-int chose(int k){
+int chose(){
     int minDist = -1;
     for(int i = 0;i < k; i++){
         if(move[i].visit == 0){
@@ -70,5 +70,7 @@ int chose(int k){
 }
 
 void motion(){
-
+    int c = chose();
+    B.position.x= move[c].position.x;
+    B.position.y= move[c].position.y;
 }
