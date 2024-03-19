@@ -57,6 +57,8 @@ void initialCond(void){
 
         //randomly generted values for B's properties
         B.vMax = ranNum(180,200);
+        B.angMax = 90;
+        B.angMin = 0;
         switch(ranNum(0,3)){
             case 0: B.type = 'U';
                     break;

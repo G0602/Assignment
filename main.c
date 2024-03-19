@@ -45,11 +45,13 @@ void prntDtl(FILE *file){
     fprintf(file, "\tMaximum_Shell_velocity: %d m/s\n", B.vMax);
     fprintf(file, "\ttype: %c\n", B.type);
     if(B.status == 1){
-            fprintf(file, "\tstatus: %s\n", "Available");
-        } else {
-            fprintf(file, "\tstatus: %s\n", "Offline");
-        }
-    fprintf(file, "\tcoordiate: ( %d, %d)\n\n", B.position.x, B.position.y);
+        fprintf(file, "\tstatus: %s\n", "Available");
+    } else {
+        fprintf(file, "\tstatus: %s\n", "Offline");
+    }
+    fprintf(file, "\tcoordiate: ( %d, %d)\n", B.position.x, B.position.y);
+    fprintf(file, "\tMaximum_Angle_of_the_Gun: %d'\n", B.angMax);
+    fprintf(file, "\tMinimum_Angle_of_the_Gun: %d'\n\n", B.angMin);
 
     for(int i = 0; i < N; i++){
         fprintf(file, "ESCORT_SHIP_%d's Details:\n", i + 1);
