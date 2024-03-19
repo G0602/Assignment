@@ -69,6 +69,7 @@ int chose(){
     return minDist;
 }
 
+//this function move the B by changing its coordinate to the closest location 
 void motion(){
     int c = chose();
     B.position.x= move[c].position.x;
