@@ -29,8 +29,8 @@ int battle(int it){
     B.range.min= 0;
     B.range.max= rangeF(45, B.vMax);
     if(it >= t && B.maxVelMinRng == 0){// only true if current itteration is greater than or equal to t and value for maxVelMinRng isn't previously assigned
-        B.angMin= ranNum(0,30);
-        B.maxVelMinRng = rangeF(B.range.min, B.vMax);
+        B.angMin= ranNum(10,30);
+        B.maxVelMinRng = rangeF(B.angMin, B.vMax);
     } 
 
     printf("Current itteration no.%d:\nCurrent location(%d, %d).\n", it, B.position.x, B.position.y);
