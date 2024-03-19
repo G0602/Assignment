@@ -4,7 +4,8 @@
 #define GLBL_VARS_H
 
 #include <stdbool.h>
-//definig the location of the ships
+
+//definig the location in the canvas
 typedef struct {
     int x;
     int y;
@@ -43,10 +44,11 @@ extern int N; // N is for the number of escort ships
 extern int D; // D is for the size of the battle field, in kilo meter
 
 extern btlShp B; //B is to indicate the battle ship
-extern escShp *E; //an escShp class pointer to be used as a pointer
+extern escShp *E; //an escShp class pointer to store the memory address of escort ship structure
 
+extern Point *movement;// pointer to store the memory adress of the location where B needs to move
 
-void prntDtl(FILE *file);
+extern void prntDtl(FILE *file);
 
 
 #endif
