@@ -28,7 +28,7 @@ int battle(int it){
     B.range.min= 0;
     B.range.max= rangeF(45, B.vMax);
 
-    printf("Current itteration no.%d:\n", it);
+    printf("Current itteration no.%d:\nCurrent location(%d, %d).\n", it, B.position.x, B.position.y);
     fprintf(file1, "Current itteration no.%d:\n", it);
 
     for(int i = 0; i < N; i++){
@@ -46,7 +46,11 @@ int battle(int it){
 
     prntDtl(file2);
 
-    
+    //the following mesage will print after the last iteration
+    if(it == k || B.status == 0){
+        printf("The total time took to complete all iterations is %.2f.\nIn total B has destroyed %d Es.\n", tTime, tKill);
+        fprintf(file1, "The total time took to complete all iterations is %.2f.\nIn total B has destroyed %d Es.\n", tTime, tKill);
+    }
 
     fclose(file1);
     fclose(file2);
@@ -101,7 +105,7 @@ void canBAtk(FILE *file){
     killCount = 0;
     killTime = 0;
     for(int i = 0; i < N; i++){
-        if(E[i].dist <= B.range.max){
+        if(E[i].dist <= B.range.max && E[i].status == 1){
             if (killCount == 0){ 
                 printf("Following ships has been destroyed by B:\n");
                 fprintf(file, "Following ships has been destroyed by B:\n");
@@ -109,9 +113,10 @@ void canBAtk(FILE *file){
             E[i].status = 0;
             killCount++;
             killTime += atkTime(i);
-            E[i].status = 0;
-            printf("%s\n", E[i].indexNum);
+            printf("\t%s\n", E[i].indexNum);
             fprintf(file, "%s\n", E[i].indexNum);
         }
     }
+    tTime += killTime;
+    tKill += killCount;
 }
