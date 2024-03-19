@@ -4,9 +4,9 @@
 #include "glbl_vars.h"
 
 // defining following variables to be used in all other files and function
-int D = 10;// Default values for D
-int N = 10;// Default values for N
-int k = 10;// k is for the number of locations B need to move
+int D = 10;// Default value for D
+int N = 10;// Default value for N
+int k = 10;// Default value for k
 btlShp B;
 escShp *E;
 Movement *move;
@@ -16,7 +16,11 @@ int main(){
     move = (Movement*) malloc(k * sizeof(Movement));
 
     initialCond();
-    battle();
+    int iteration=0; // the number of times the battle has happend
+    //do{
+        battle();
+        iteration++;
+    //} while((iteration < k) && (B.status == 1))
 
     free(E);
 
