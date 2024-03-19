@@ -8,6 +8,7 @@
 int D = 10;// Default value for D
 int N = 10;// Default value for N
 int k = 10;// Default value for k
+int t = 5;// Default value for t
 btlShp B;
 escShp *E;
 Movement *move;

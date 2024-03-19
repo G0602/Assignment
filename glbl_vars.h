@@ -49,15 +49,15 @@ typedef struct {
     char indexNum[7];// for the unique ship identifiyer
 } escShp;
 
-extern int N; // N is for the number of escort ships
-extern int D; // D is for the size of the battle field, in kilo meter
-extern int k; // k is for the number of locations B need to move
-extern int t; // to denote when the gun of B get stuck
+extern int N; // N is for the number of escort ships, defined in main.c
+extern int D; // D is for the size of the battle field, in kilo meter, defined in main.c
+extern int k; // k is for the number of locations B need to move, defined in main.c
+extern int t; // to denote when the gun of B get stuck, defined in main.c
 
-extern btlShp B; //B is to indicate the battle ship
-extern escShp *E; //an escShp class pointer to store the memory address of escort ship structure
+extern btlShp B; //B is to indicate the battle ship, defined in main.c
+extern escShp *E; //an escShp class pointer to store the memory address of escort ship structure, defined in main.c
 
-extern Movement *move;// pointer to store the memory adress of the location where B needs to move
+extern Movement *move;// pointer to store the memory adress of the location where B needs to move, defined in main.c
 
 extern void prntDtl(FILE *file);// defined in main.c
 
