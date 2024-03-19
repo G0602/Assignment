@@ -34,7 +34,7 @@ int battle(int it){
     for(int i = 0; i < N; i++){
         rangeMinMax(i);
         E[i].dist = distCalc(B.position.x, B.position.y, E[i].position.x, E[i].position.y);;
-        //canEAtk(i);
+        canEAtk(i);
     }
     
     if (B.status == 1){
