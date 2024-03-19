@@ -74,4 +74,5 @@ void motion(){
     int c = chose();
     B.position.x= move[c].position.x;
     B.position.y= move[c].position.y;
+    move[c].visit = 1;
 }
