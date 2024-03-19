@@ -29,6 +29,8 @@ typedef struct {
     char type;// type of B
     Minmax range; // attack range of B, in kilo meter
     int vMax;// maximum velocity of B's shell, will be in meter per second
+    int angMax;// maximum angle of B's gun, in degree
+    int angMin;// minimum angle of B's gun, in degree
     bool status;//if sgttus is 1 the ship is fine if it's 0 the the ship is destroyed
 } btlShp;
 
@@ -50,6 +52,7 @@ typedef struct {
 extern int N; // N is for the number of escort ships
 extern int D; // D is for the size of the battle field, in kilo meter
 extern int k; // k is for the number of locations B need to move
+extern int t; // to denote when the gun of B get stuck
 
 extern btlShp B; //B is to indicate the battle ship
 extern escShp *E; //an escShp class pointer to store the memory address of escort ship structure
