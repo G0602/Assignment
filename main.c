@@ -1,4 +1,3 @@
-#include <stdlib.h>
 #include "initial/initial.h"
 #include "battle/battle.h"
 #include "glbl_vars.h"

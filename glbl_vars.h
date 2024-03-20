@@ -3,7 +3,10 @@
 #ifndef GLBL_VARS_H
 #define GLBL_VARS_H
 
+#include <stdlib.h>
+#include <time.h>
 #include <stdbool.h>
+#include <stdio.h>
 
 //definig a location in the canvas
 typedef struct {

@@ -1,9 +1,7 @@
-#include <stdlib.h>
-#include <time.h>
 #include "random.h"
+#include "../glbl_vars.h"
 
 
 int ranNum(int min, int max) {
-    //srand(time(NULL));
     return min + rand() % (max - min + 1);
 }
