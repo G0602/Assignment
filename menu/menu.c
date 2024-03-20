@@ -1,5 +1,5 @@
 #include <stdio.h> 
-#include "../glbLvars.h"
+#include "../glbl_vars.h"
 #include "menu.h"
 
 int mo;// menu option
@@ -18,9 +18,13 @@ void mainMenu(void){
 
     switch(mo){
         case 1: opt1();
+                break;
         case 2: opt2();
+                break;
         case 3: opt3();
+                break;
         case 4: opt4();
+                break;
         default  : ;//default option
     }
 }
@@ -34,25 +38,22 @@ void opt1(void){
     scanf("%d", &mo);
     switch(mo){
         case 1: subMenu();
+                break;
         case 2: return;
         default  : ;//default option
     }
-    break;
 }
 
 void opt2(void){
     printf("Upcomming cange");
-    break;
 }
 
 void opt3(void){
     //function to display files and select them
-    break;
 }
 
 void opt4(void){
     //exit function
-    break;
 }
 
 void subMenu(void){
@@ -67,7 +68,7 @@ void subMenu(void){
     switch(smo){
         case 1: B_Dtl( stdout);
                 break;
-        case 2: ptintf("Enter the number of the escort ship you want to see the details of (1 - %d).\nEnter 0 if you want to see the details of all the escort ships.: ", N);
+        case 2: printf("Enter the number of the escort ship you want to see the details of (1 - %d).\nEnter 0 if you want to see the details of all the escort ships.: ", N);
                 scanf(" %d", &n);
                 smo = n;
                 switch(n){
@@ -81,5 +82,4 @@ void subMenu(void){
                 break;
         default  : ;//default option
     }
-    break;
 }

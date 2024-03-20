@@ -18,7 +18,7 @@ int main(){
     E = (escShp*) malloc(N * sizeof(escShp));
     move = (Movement*) malloc(k * sizeof(Movement));
 
-    mainMenu()
+    mainMenu();
 
     initialCond();
     location();
