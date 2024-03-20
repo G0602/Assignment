@@ -20,12 +20,14 @@ int main(){
     move = (Movement*) malloc(k * sizeof(Movement));
 
     do{
-        q = mainMenu();
-        if(q == 1)
-            continue;
 
         initialCond();
         location();
+        
+        q = mainMenu();// if this return 1 the programm will close
+        if(q == 1)
+            continue;
+        
         do{
             battle(iteration + 1);
             motion();
