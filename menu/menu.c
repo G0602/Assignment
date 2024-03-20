@@ -1,72 +1,93 @@
-#include <stdio.h> 
 #include "../glbl_vars.h"
 #include "menu.h"
 
-int mo;// menu option
+int mo1;// main menu option
+int mo2;// simulation option
 int smo;// sub menu option
 int n; // to see the details of the Es
+int seed; //seed value for the ran function
+
+bool s; // for returning to menue
 
 bool mainMenu(void){
+    
+    top:
+
     printf("Main Menu:\n");
     printf("\t1. Start Simulation\n");
     printf("\t2. View Instructions\n");
     printf("\t3. Simulation Statistics\n");
     printf("\t4. Exit\n\n");
-
-    top:
-
     printf("Enter Your Choice: ");
-    scanf("%d", &mo);
+    scanf("%d", &mo1);
 
-    switch(mo){
+    switch(mo1){
         case 1: opt1();
-                break;
+                if (s == 1){
+                    s = 0;
+                    goto top;
+                }
+                return 0;// this will start the simulation
         case 2: opt2();
-                break;
+                goto top;
         case 3: opt3();
-                break;
+                goto top;
         case 4: return 1; //this will exit the programm
 
-        default  : printf("Wrong entry please enter the correct number.\n");
+        default  : printf("\nWrong entry please enter the correct number.\n");
                 goto top;
     }
-
-    return 0;
 }
 
-void opt1(void){
-    mo = 0;
+bool opt1(void){
+    middle:
+
     printf("Simulation Options:\n");
     printf("\t1. Setup\n");
-    printf("\t2. Run Simulation\n\n");
+    printf("\t2. Run Simulation\n");
+    printf("\t3. Go back\n\n");
     printf("Enter Your Choice: ");
-    scanf("%d", &mo);
-    switch(mo){
-        case 1: subMenu();
-                break;
-        case 2: return;
-        default  : ;//default option
+    scanf(" %d", &mo2);
+    switch(mo2){
+        case 1: s = subMenu();
+                if (s == 1){
+                    s = 0;
+                    return 1;
+                }
+                goto middle;
+        case 2: return 0;
+
+        case 3: return 1;
+
+        //case 3: goto top;
+
+        default  : printf("\nWrong entry please enter the correct number.\n");
+                goto middle;
     }
 }
 
 void opt2(void){
-    printf("Upcomming cange");
+    //function to display instructions
+    printf("Upcomming cange\n");
 }
 
 void opt3(void){
     //function to display files and select them
+    printf("Upcomming cange\n");
 }
 
 
-void subMenu(void){
+bool subMenu(void){
+    last:
     smo = 0;
     printf("Setup Options:\n");
-    printf("\t1. Battleship Properties\n");
-    printf("\t2. Escort ships Settings\n");
+    printf("\t1. Battle ship Properties\n");
+    printf("\t2. Escort ship Properties\n");
     printf("\t3. Seed value\n");
-    printf("\t4. Return to Main Menu\n\n");
+    printf("\t4. Go back\n");
+    printf("\t5. Return to Main Menu\n\n");
     printf("Enter Your Choice: ");
-    scanf("%d", &smo);
+    scanf(" %d", &smo);
     switch(smo){
         case 1: B_Dtl( stdout);
                 break;
@@ -79,6 +100,15 @@ void subMenu(void){
                     E_Dtl(i, stdout);
                 }
                 break;
-        default  : ;//default option
+        case 3: printf("Enter the new seed value for the random number generator:\n");
+                scanf("%d", &seed);
+                srand(seed);
+                break;
+        case 4:break;
+        case 5: return 1;
+
+        default: printf("\nWrong entry please enter the correct number.\n");
+                goto last;
     }
+    return 0;
 }
