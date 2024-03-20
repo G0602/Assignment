@@ -7,6 +7,7 @@
 #include <time.h>
 #include <stdbool.h>
 #include <stdio.h>
+#include <math.h>
 
 //definig a location in the canvas
 typedef struct {

@@ -1,5 +1,3 @@
-#include <math.h>
-#include <stdio.h>
 #include "../random/random.h"
 #include "../glbl_vars.h"
 #include "battle.h"
@@ -96,8 +94,10 @@ float atkTime(int i){
 }
 
 
-//this function check whether the E can attack B
+//this function check whether the E can attack B if E has not been destroyed
 void canEAtk(int i){
+    if(E[i].status == 0)
+        return;
 
     if((E[i].dist <= E[i].range.max) && (E[i].dist >= E[i].range.min)){
         B.hp -= E[i].ip;
