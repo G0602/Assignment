@@ -3,6 +3,8 @@
 #include "menu.h"
 
 int mo;// menu option
+int smo;// sub menu option
+int n; // to see the details of the Es
 
 void mainMenu(void){
     printf("Main Menu:\n");
@@ -54,17 +56,29 @@ void opt4(void){
 }
 
 void subMenu(void){
-    mo = 0;
+    smo = 0;
     printf("Setup Options:\n");
     printf("\t1. Battleship Properties\n");
     printf("\t2. Escort ships Settings\n");
     printf("\t3. Seed value\n");
     printf("\t4. Return to Main Menu\n\n");
     printf("Enter Your Choice: ");
-    scanf("%d", &mo);
-    switch(mo){
-        case 1: subMenu();
-        case 2: return;
+    scanf("%d", &smo);
+    switch(smo){
+        case 1: B_Dtl( stdout);
+                break;
+        case 2: ptintf("Enter the number of the escort ship you want to see the details of (1 - %d).\nEnter 0 if you want to see the details of all the escort ships.: ", N);
+                scanf(" %d", &n);
+                smo = n;
+                switch(n){
+                    case 0: n = 0;
+                            smo = N;
+                    default:
+                        for(int i = n; i <= smo; i++){
+                            E_Dtl(i, stdout);
+                        }
+                }
+                break;
         default  : ;//default option
     }
     break;
