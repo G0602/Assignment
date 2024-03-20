@@ -7,7 +7,7 @@ int smo;// sub menu option
 int n; // to see the details of the Es
 int seed; //seed value for the ran function
 
-bool s; // for returning to menue
+bool s; // for returning to menu
 
 bool mainMenu(void){
     
