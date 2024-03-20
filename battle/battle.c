@@ -33,7 +33,7 @@ int battle(int it){
         B.maxVelMinRng = rangeF(B.angMin, B.vMax);
     } 
 
-    printf("Current itteration no.%d:\nCurrent location(%d, %d).\n", it, B.position.x, B.position.y);
+    printf("Current itteration no.%d:\nCurrent location( %d, %d).\n", it, B.position.x, B.position.y);
     fprintf(file1, "Current itteration no.%d:\n", it);
 
     for(int i = 0; i < N; i++){
@@ -122,7 +122,7 @@ void canBAtk(FILE *file){
             E[i].status = 0;
             killCount++;
             killTime += atkTime(i);
-            printf("\t%s\n", E[i].indexNum);
+            printf("\t%s( %d, %d)\n", E[i].indexNum, E[i].position.x, E[i].position.y);
             fprintf(file, "%s\n", E[i].indexNum);
         }
     }
