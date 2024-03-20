@@ -38,14 +38,14 @@ int battle(int it){
 
     for(int i = 0; i < N; i++){
         rangeMinMax(i);
-        E[i].dist = distCalc(B.position.x, B.position.y, E[i].position.x, E[i].position.y);;
+        E[i].dist = distCalc(B.position.x, B.position.y, E[i].position.x, E[i].position.y);
         canEAtk(i);
     }
     
     if (B.status == 1){
         canBAtk ( file1);
-        printf("Currently there are no Es in the range of B in this location.\nTotal number of Es got destroyed is %d.\nTotal time took to finish the battle is %.2fs.\n\n", killCount, killTime);
-        fprintf(file1, "Currently there are no Es in the range of B in this location.\nTotal number of Es got destroyed is %d.\nTotal time took to finish the battle is %.2fs.\n\n", killCount, killTime);
+        printf("Currently there are no Es in the range of B in this location.\nTotal number of Es got destroyed in this location is %d.\nTotal time took to finish the battle in this location is %.2fs.\n\n", killCount, killTime);
+        fprintf(file1, "Currently there are no Es in the range of B in this location.\nTotal number of Es got destroyed in this location is %d.\nTotal time took to finish the battle in this location is %.2fs.\n\n", killCount, killTime);
     }
 
 
