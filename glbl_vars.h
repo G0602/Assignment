@@ -62,7 +62,9 @@ extern escShp *E; //an escShp class pointer to store the memory address of escor
 
 extern Movement *move;// pointer to store the memory adress of the location where B needs to move, defined in main.c
 
-extern void prntDtl(FILE *file);// defined in main.c
+extern void prntDtl(FILE *file); // prints the detail of the current canvas to initial.txt file and the ships.defined in main.c
+extern void B_Dtl( FILE *file); // prints the details of B to initial.txt file. defiend in main.c
+extern void E_Dtl(int i, FILE *file); // prints the details of E to initial.txt file. defiend in main.c
 
 
 #endif
