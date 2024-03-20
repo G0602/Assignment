@@ -13,25 +13,30 @@ btlShp B;
 escShp *E;
 Movement *move;
 
+bool q = 0;// to decide whether to exit or not
+
 int main(){
     int iteration=0; // the number of times the battle has happend
     E = (escShp*) malloc(N * sizeof(escShp));
     move = (Movement*) malloc(k * sizeof(Movement));
 
-    mainMenu();
-
-    initialCond();
-    location();
     do{
-        battle(iteration + 1);
-        motion();
-        iteration++;
-    } while((iteration < k) && (B.status == 1));
+        q = mainMenu();
+        if(q == 1)
+            continue;
 
-    if((iteration == k) && (B.status == 1)){
-        printf("The Battle ship survived all iterations.\n");
-    }
+        initialCond();
+        location();
+        do{
+            battle(iteration + 1);
+            motion();
+            iteration++;
+        } while((iteration < k) && (B.status == 1));
 
+        if((iteration == k) && (B.status == 1)){
+            printf("The Battle ship survived all iterations.\n");
+        }
+    } while (q == 0);
 
     free(E);
     free(move);

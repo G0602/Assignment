@@ -1,7 +1,7 @@
 #ifndef MENU_H
 #define MENU_H
 
-void mainMenu(void);
+bool mainMenu(void);
 void opt1(void);
 void opt2(void);
 void opt3(void);

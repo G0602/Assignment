@@ -66,6 +66,6 @@ extern void prntDtl(FILE *file); // prints the detail of the current canvas to i
 extern void B_Dtl( FILE *file); // prints the details of B to initial.txt file. defiend in main.c
 extern void E_Dtl(int i, FILE *file); // prints the details of E to initial.txt file. defiend in main.c
 
-extern void mainMenu(void); //open the main menu of the programm. defiend in menu.c
+extern bool mainMenu(void); //open the main menu of the programm. defiend in menu.c
 
 #endif

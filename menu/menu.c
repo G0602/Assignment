@@ -6,12 +6,14 @@ int mo;// menu option
 int smo;// sub menu option
 int n; // to see the details of the Es
 
-void mainMenu(void){
+bool mainMenu(void){
     printf("Main Menu:\n");
     printf("\t1. Start Simulation\n");
     printf("\t2. View Instructions\n");
     printf("\t3. Simulation Statistics\n");
     printf("\t4. Exit\n\n");
+
+    top:
 
     printf("Enter Your Choice: ");
     scanf("%d", &mo);
@@ -23,10 +25,13 @@ void mainMenu(void){
                 break;
         case 3: opt3();
                 break;
-        case 4: opt4();
-                break;
-        default  : ;//default option
+        case 4: return 1; //this will exit the programm
+
+        default  : printf("Wrong entry please enter the correct number.\n");
+                goto top;
     }
+
+    return 0;
 }
 
 void opt1(void){
@@ -52,9 +57,6 @@ void opt3(void){
     //function to display files and select them
 }
 
-void opt4(void){
-    //exit function
-}
 
 void subMenu(void){
     smo = 0;
