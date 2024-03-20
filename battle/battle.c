@@ -23,16 +23,17 @@ int battle(int it){
         printf("Error opening the file finale.txt.\n");
         return 1;
     }
+
+    printf("Current itteration no.%d:\nCurrent location( %d, %d).\n", it, B.position.x, B.position.y);
+    fprintf(file1, "Current itteration no.%d:\n", it);
     
     B.range.min= 0;
     B.range.max= rangeF(45, B.vMax);
     if(it >= t && B.maxVelMinRng == 0){// only true if current itteration is greater than or equal to t and value for maxVelMinRng isn't previously assigned
         B.angMin= ranNum(10,30);
+        printf("The gun of the Battle ship is malfunctioned.Now the minimum attacking angle is %d'.\n", B.angMin);
         B.maxVelMinRng = rangeF(B.angMin, B.vMax);
     } 
-
-    printf("Current itteration no.%d:\nCurrent location( %d, %d).\n", it, B.position.x, B.position.y);
-    fprintf(file1, "Current itteration no.%d:\n", it);
 
     for(int i = 0; i < N; i++){
         rangeMinMax(i);
