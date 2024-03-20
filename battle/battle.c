@@ -51,8 +51,8 @@ int battle(int it){
 
     //the following mesage will print after the last iteration
     if(it == k || B.status == 0){
-        printf("The total time took to complete all iterations is %.2f.\nIn total B has destroyed %d Es.\n", tTime, tKill);
-        fprintf(file1, "The total time took to complete all iterations is %.2f.\nIn total B has destroyed %d Es.\n", tTime, tKill);
+        printf("The total time took to complete all iterations is %.2f.\nIn total B has destroyed %d Es.\nRemaining durability of the battleship is %d%%\n\n", tTime, tKill, B.hp);
+        fprintf(file1, "The total time took to complete all iterations is %.2f.\nIn total B has destroyed %d Es.\nRemaining durability of the battleship is %d%%\n\n", tTime, tKill, B.hp);
     }
 
     fclose(file1);
