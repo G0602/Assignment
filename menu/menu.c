@@ -68,16 +68,13 @@ void subMenu(void){
     switch(smo){
         case 1: B_Dtl( stdout);
                 break;
-        case 2: printf("Enter the number of the escort ship you want to see the details of (1 - %d).\nEnter 0 if you want to see the details of all the escort ships.: ", N);
+        case 2: printf("Enter the number of the escort ship you want to see the details of (1 - %d).\nEnter 0 if you want to see the details of all the escort ships: ", N);
                 scanf(" %d", &n);
-                smo = n;
-                switch(n){
-                    case 0: n = 0;
-                            smo = N;
-                    default:
-                        for(int i = n; i <= smo; i++){
-                            E_Dtl(i, stdout);
-                        }
+                for(int i = 0; i < N; i++){
+                    if(i != n-1 && n != 0){
+                        continue;
+                    }
+                    E_Dtl(i, stdout);
                 }
                 break;
         default  : ;//default option
