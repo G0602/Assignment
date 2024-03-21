@@ -66,13 +66,15 @@ char* btlList(void){
     int count = 0;
     printf("\nFollowing battle datas are availablle:\n");
     while ((btl[count] = readdir(dir)) != NULL && count < max) {
-        if (strcmp(btl[count]->d_name, ".") != 0 && strcmp(btl[count]->d_name, "..") != 0) {// Skip the current and parent directories
-            printf("\t%d.%s\n", count+1, btl[count]->d_name);
-            count++;
+        if (btl[count]->d_type == DT_DIR) {// To only consider directory files
+            if (strcmp(btl[count]->d_name, ".") != 0 && strcmp(btl[count]->d_name, "..") != 0) {// Skip the current and parent directories
+                printf("\t%d.%s\n", count+1, btl[count]->d_name);
+                count++;
+            }
         }
     }
 
-    if(btl == NULL && count == 0){
+    if(btl[count] == NULL && count == 0){
         printf("\033[F"); //to overwrite the previouse line
         printf("        There is no record of past battles.\n");
         goto end;
