@@ -56,16 +56,16 @@ void btlList(void){
 
     if (dir == NULL) {
         printf("Error! Unable to open battle_info directory.\n");
-        exit(EXIT_FAILURE);
+        return;
     }
 
 
 
     int count = 0;
-    printf("\nFollowing battle datas are availablle:\n");
+printf("\nFollowing battle datas are availablle:\n");
     while ((btl = readdir(dir)) != NULL && count < max) {
         if (btl->d_type == DT_DIR) { // Check if it's a directory
-            if (strcmp(btl->d_name, ".") != 0 && strcmp(btl->d_name, "..") != 0) {// Skip the current and parent directories
+                        if (strcmp(btl->d_name, ".") != 0 && strcmp(btl->d_name, "..") != 0) {// Skip the current and parent directories
                 printf("\t%s\n", btl->d_name);
                 count++;
             }
