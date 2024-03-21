@@ -2,6 +2,7 @@
 
 #include "../glbl_vars.h"
 #include "data.h"
+#include <dirent.h>
 
 //need to make some changes depends on the function calling this
 void prntDtl(FILE *file){
@@ -45,4 +46,36 @@ void E_Dtl(int i, FILE *file){
     fprintf(file, "\tMinimum_Shell_velocity: %d m/s\n", E[i].vMin);
     fprintf(file, "\tMaximum_Angle_of_the_Gun: %d'\n", E[i].angMax);
     fprintf(file, "\tMinimum_Angle_of_the_Gun: %d'\n\n", E[i].angMin);
+}
+
+void btlList(void){
+    int max = 100;
+    const char *path = "./battle_info";
+
+    struct dirent *btl;
+    DIR *dir = opendir(path);
+
+    if (dir == NULL) {
+        printf("Error! Unable to open directory.\n");
+        exit(EXIT_FAILURE);
+    }
+
+
+
+    int count = 0;
+    printf("Following battle datas are availablle:\n");
+    while ((btl = readdir(dir)) != NULL && count < max) {
+        if (btl->d_type == DT_DIR) { // Check if it's a directory
+            if (strcmp(btl->d_name, ".") != 0 && strcmp(btl->d_name, "..") != 0) {// Skip the current and parent directories
+                printf("%s\n", btl->d_name);
+                count++;
+            }
+        }
+    }
+
+    if (count == max) {
+        printf("...and more directories exist.\n");
+    }
+
+    closedir(dir);
 }

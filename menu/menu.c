@@ -70,9 +70,10 @@ void opt2(void){
     printf("Upcomming cange\n");
 }
 
+//function to display files and select them
 void opt3(void){
-    //function to display files and select them
-    printf("Upcomming cange\n");
+    btlList();
+    //not finisded
 }
 
 

@@ -8,6 +8,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <math.h>
+#include <string.h>
 
 //definig a location in the canvas
 typedef struct {
