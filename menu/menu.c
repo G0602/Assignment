@@ -60,8 +60,6 @@ bool opt1(void){
 
         case 3: return 1;
 
-        //case 3: goto top;
-
         default  : printf("\nWrong entry please enter the correct number.\n");
                 goto middle;
     }
