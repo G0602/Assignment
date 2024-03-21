@@ -23,6 +23,8 @@ int main(){
     E = (escShp*) malloc(N * sizeof(escShp));// allocating dinamic memmory
     move = (Movement*) malloc(k * sizeof(Movement));// allocating dinamic memmory
 
+    system("clear");// to clear the command line
+
     do{
         iteration=0;
         genName(); // name the battle based on time. defined in random.c
@@ -34,7 +36,7 @@ int main(){
             continue;
         }
         
-        printf("%s begins!!!!!!!!!", name);
+        printf("%s begins!!!!!!!!!\n", name);
         do{
             battle(iteration + 1);
             motion();
@@ -54,6 +56,7 @@ int main(){
 
     free(E);
     free(move);
+    system("clear");// to clear the command line
 
     return 0;
 }

@@ -24,5 +24,5 @@ void genName(void) {
     strftime(temp, sizeof(temp), "%Y%m%d_%H%M%S", timeinfo);
 
     // to create a name using the formatted time
-    snprintf(name, sizeof(name), "battle_%s.txt", temp);
+    snprintf(name, sizeof(name), "battle_%s", temp);
 }

@@ -98,7 +98,7 @@ bool subMenu(void){
     switch(smo){
         case 1: B_Dtl( stdout);
                 cho1:
-                printf("Would you like to change anything?(y/n)");
+                printf("Would you like to change anything?(y/n)\n");
                 scanf("%c",&cho);
                 if(cho == 'y'){
 
@@ -119,7 +119,7 @@ bool subMenu(void){
                     E_Dtl(i, stdout);
                 }
                 cho2:
-                printf("Would you like to change anything?(y/n)");
+                printf("Would you like to change anything?(y/n)\n");
                 scanf("%c", &cho);
                 if(cho == 'y'){
 
