@@ -1,3 +1,6 @@
+//this is the header file for data.c
+//all the functions declared here are defined in data.c
+
 #ifndef DATA_H
 #define DATA_H
 

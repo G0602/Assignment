@@ -1,3 +1,5 @@
+//this file contains the functions related to assigning random values to B and E and other variables and printing the initial values befor battle
+
 #include "../random/random.h"
 #include "initial.h"
 #include"../glbl_vars.h"

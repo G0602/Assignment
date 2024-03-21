@@ -1,3 +1,6 @@
+//this is the header file for battle.c
+//all the functions declared here are defined in battle.c
+
 #ifndef BATTLE_H
 #define BATTLE_H
 

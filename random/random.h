@@ -1,3 +1,6 @@
+//this is the header file for random.c
+//all the functions declared here are defined in random.c
+
 #ifndef RANDOM_H
 #define RANDOM_H
 

@@ -1,10 +1,11 @@
-//this sile contains the functions required to eading and writing data in a text file
+//this file contains the functions required to editing and writing data in a text file
 
 #include "../glbl_vars.h"
 #include "data.h"
 #include <dirent.h>
 #include <unistd.h>
 
+//this function will write the details of B and all Es in a givven pointer location
 void prntDtl(FILE *file){
     fprintf(file, "canvasSize(D): %d km\n", D);
     fprintf(file, "escortNum: %d\n\n", N);
@@ -16,6 +17,7 @@ void prntDtl(FILE *file){
     }
 }
 
+//this function will write the details of B in a givven pointer location
 void B_Dtl(FILE *file){
     fprintf(file, "BATTLE_SHIP's Details:\n");
     fprintf(file, "\tMaximum_Shell_velocity: %d m/s\n", B.vMax);
@@ -31,6 +33,7 @@ void B_Dtl(FILE *file){
     fprintf(file, "\tMinimum_Angle_of_the_Gun: %d'\n\n", B.angMin);
 }
 
+//this function will write the details of one E in a givven pointer location by gettig the number of E and the pointer as the input
 void E_Dtl(int i, FILE *file){
     fprintf(file, "ESCORT_SHIP_%d's Details:\n", i + 1);
     fprintf(file, "\tType: %c\n", E[i].type);
@@ -48,6 +51,7 @@ void E_Dtl(int i, FILE *file){
     fprintf(file, "\tMinimum_Angle_of_the_Gun: %d'\n\n", E[i].angMin);
 }
 
+// this function list all the directories in the battle_info directory and return the pointer to the directory the user chose.
 char* btlList(void){
     int max = 100;
     int temp;// to return the input
@@ -95,6 +99,7 @@ end:
     return btl[temp-1]->d_name;
 }
 
+// this function get a pointer to a directory as in put and show the files in that directories
 void selBtl(char *btlPath){
 
    if (chdir(btlPath) != 0) {

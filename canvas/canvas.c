@@ -1,6 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
+//this file contains functions related to location generation and movement of B
+
 #include "../glbl_vars.h"
 #include "../random/random.h"
 

@@ -1,3 +1,6 @@
+//this is the header file for canvas.c
+//all the functions declared here are defined in canvas.c
+
 #ifndef CANVAS_H
 #define CANVAS_H
 

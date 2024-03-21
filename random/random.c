@@ -1,3 +1,5 @@
+//this file contains functions related to time.h header file
+
 #include "random.h"
 #include "../glbl_vars.h"
 
@@ -14,13 +16,13 @@ void genName(void) {
     struct tm *timeinfo;
     char temp[20]; // to store the time as string
 
-    // Get current time
+    // to get current time
     time(&current_time);
     timeinfo = localtime(&current_time);
 
-    // Format time into a string
+    // to format time into a string
     strftime(temp, sizeof(temp), "%Y%m%d_%H%M%S", timeinfo);
 
-    // Create filename using the formatted time
+    // to create a name using the formatted time
     snprintf(name, sizeof(name), "battle_%s.txt", temp);
 }

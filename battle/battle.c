@@ -1,3 +1,5 @@
+//this file contains the functions related to the battle.
+
 #include "../random/random.h"
 #include "../glbl_vars.h"
 #include "battle.h"
@@ -8,8 +10,8 @@
 const float g = 9.80665;// acceleration of gravity
 int tKill = 0;//to show how many Es' has been destroyed by B totaly
 float tTime = 0;// total time to complete B's attacks
-int killCount = 0;//
-float killTime = 0;//
+int killCount = 0;//number of E destroyed at the attack in one location
+float killTime = 0;//time took to complete the attack in one location
 
 int battle(int it){
     
