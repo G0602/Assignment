@@ -3,16 +3,14 @@
 #include "../data/data.h"
 
 int seed; //seed value for the ran function
-
-int mo1;// main menu option
-int mo2;// simulation option
-int smo;// sub menu option
 int n; // to see the details of the Es
 bool s; // for returning to menu
 char *temp; //to store the temperory pointer values
 
 bool mainMenu(void){
-    
+
+    int mo1;// main menu option
+
     top:
 
     printf("Main Menu:\n");
@@ -24,7 +22,7 @@ bool mainMenu(void){
     scanf("%d", &mo1);
 
     switch(mo1){
-        case 1: opt1();
+        case 1: s = opt1();
                 if (s == 1){
                     s = 0;
                     goto top;
@@ -42,6 +40,9 @@ bool mainMenu(void){
 }
 
 bool opt1(void){
+
+    int mo2;// simulation option
+
     middle:
 
     printf("Simulation Options:\n");
@@ -84,7 +85,8 @@ void opt3(void){
 
 bool subMenu(void){
     last:
-    smo = 0;
+    int smo = 0;// sub menu option
+    char cho; //to get user decision
     printf("Setup Options:\n");
     printf("\t1. Battle ship Properties\n");
     printf("\t2. Escort ship Properties\n");
@@ -95,7 +97,19 @@ bool subMenu(void){
     scanf(" %d", &smo);
     switch(smo){
         case 1: B_Dtl( stdout);
+                cho1:
+                printf("Would you like to change anything?(y/n)");
+                scanf("%c",&cho);
+                if(cho == 'y'){
+
+                } else if (cho == 'n'){
+                    n = '\0';
+                } else {
+                    printf("\nNot a valid choice.\n");
+                    goto cho1;
+                }
                 break;
+
         case 2: printf("Enter the number of the escort ship you want to see the details of (1 - %d).\nEnter 0 if you want to see the details of all the escort ships: ", N);
                 scanf(" %d", &n);
                 for(int i = 0; i < N; i++){
@@ -104,12 +118,26 @@ bool subMenu(void){
                     }
                     E_Dtl(i, stdout);
                 }
+                cho2:
+                printf("Would you like to change anything?(y/n)");
+                scanf("%c", &cho);
+                if(cho == 'y'){
+
+                } else if (cho == 'n'){
+                    n = '\0';
+                } else {
+                    printf("\nNot a valid choice.\n");
+                    goto cho2;
+                }
                 break;
+
         case 3: printf("Enter the new seed value for the random number generator:\n");
                 scanf("%d", &seed);
                 srand(seed);
                 break;
-        case 4:break;
+
+        case 4: break;
+
         case 5: return 1;
 
         default: printf("\nWrong entry please enter the correct number.\n");

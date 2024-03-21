@@ -5,7 +5,6 @@
 #include <dirent.h>
 #include <unistd.h>
 
-//need to make some changes depends on the function calling this
 void prntDtl(FILE *file){
     fprintf(file, "canvasSize(D): %d km\n", D);
     fprintf(file, "escortNum: %d\n\n", N);
