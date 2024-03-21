@@ -1,5 +1,6 @@
 #include "../glbl_vars.h"
 #include "menu.h"
+#include "../data/data.h"
 
 int mo1;// main menu option
 int mo2;// simulation option

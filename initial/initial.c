@@ -1,8 +1,7 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "../random/random.h"
 #include "initial.h"
 #include"../glbl_vars.h"
+#include "../data/data.h"
 
 //function to get the initial condition and save it in a text file called initial.txt
 void initialCond(void){

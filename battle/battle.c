@@ -3,6 +3,7 @@
 #include "battle.h"
 #include "../initial/initial.h"
 #include "../canvas/canvas.h"
+#include "../data/data.h"
 
 const float g = 9.80665;// acceleration of gravity
 int tKill = 0;//to show how many Es' has been destroyed by B totaly
