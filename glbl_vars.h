@@ -57,6 +57,8 @@ typedef struct {
     char indexNum[7];// for the unique ship identifiyer
 } escShp;
 
+extern const char *path; //this is where the datas of the past battles are saved. defined in main.c
+
 extern int N; // N is for the number of escort ships, defined in main.c
 extern int D; // D is for the size of the battle field, in kilo meter, defined in main.c
 extern int k; // k is for the number of locations B need to move, defined in main.c

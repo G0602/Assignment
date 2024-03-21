@@ -50,13 +50,12 @@ void E_Dtl(int i, FILE *file){
 
 void btlList(void){
     int max = 100;
-    const char *path = "./battle_info";
 
     struct dirent *btl;
     DIR *dir = opendir(path);
 
     if (dir == NULL) {
-        printf("Error! Unable to open directory.\n");
+        printf("Error! Unable to open baattle_info directory.\n");
         exit(EXIT_FAILURE);
     }
 

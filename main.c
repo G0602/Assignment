@@ -9,6 +9,7 @@ int D = 10;// Default value for D
 int N = 10;// Default value for N
 int k = 10;// Default value for k
 int t = 5;// Default value for t
+const char *path = "./battle_info";// to read and write data
 btlShp B;
 escShp *E;
 Movement *move;
@@ -26,8 +27,9 @@ int main(){
         location();
         
         q = mainMenu();// if this return 1 the programm will close
-        if(q == 1)
+        if(q == 1){
             continue;
+        }
         
         do{
             battle(iteration + 1);
