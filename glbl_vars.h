@@ -71,7 +71,6 @@ extern escShp *E; //an escShp class pointer to store the memory address of escor
 extern Movement *move;// pointer to store the memory adress of the location where B needs to move, defined in main.c
 
 extern bool mainMenu(void); //open the main menu of the programm. defiend in menu.c
-extern bool exitMenu(void); // ask the user weather they wnat to exit or do another battle. defined in menu.c
 extern void genName(void); // to create names for battles based on time. defined in random.c
 
 #endif

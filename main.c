@@ -39,10 +39,11 @@ int main(){
         } while((iteration < k) && (B.status == 1));
 
         if((iteration == k) && (B.status == 1)){
-            printf("The Battle ship survived all iterations.\n");
+            printf("The Battle ship survived all iterations.\n\n");
         }
 
-        q= exitMenu(); //to check what the user want to do
+        printf("What would you like to do\n");
+
 
     } while (q == 0);
 
