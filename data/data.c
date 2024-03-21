@@ -2,8 +2,6 @@
 
 #include "../glbl_vars.h"
 #include "data.h"
-#include <dirent.h>
-#include <unistd.h>
 
 //this function will write the details of B and all Es in a givven pointer location
 void prntDtl(FILE *file){
@@ -53,15 +51,16 @@ void E_Dtl(int i, FILE *file){
 
 // this function list all the directories in the battle_info directory and return the pointer to the directory the user chose.
 char* btlList(void){
-    int max = 100;
+    int max = 10;
     int temp;// to return the input
 
     struct dirent *btl[max];
-    DIR *dir = opendir(path);
+    DIR *dir = opendir(".");
+    system("pwd");
 
     if (dir == NULL) {
         printf("Error! Unable to open battle_info directory.\n");
-        return 0;
+        return NULL;
     }
 
 
@@ -87,8 +86,10 @@ char* btlList(void){
         printf("\t...and more directories exist.\n");
     }
 
+    do{
     printf("Enter the number of the battle you want to see: ");
     scanf(" %d", &temp);
+    }while (!(temp >=1 && temp <= max));
     
 end:
 

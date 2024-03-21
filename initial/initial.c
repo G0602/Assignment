@@ -8,6 +8,16 @@
 //function to get the initial condition and save it in a text file called initial.txt
 void initialCond(void){
 
+    char command[6 + strlen(name)];
+    sprintf(command, "%s%s","mkdir ", name );
+    system (command);
+
+    // to change the working directory into battle_info
+    if (chdir(name) != 0) {
+        perror("Error changing directory");
+        return ;
+    }
+
     FILE *file = fopen("initial.txt", "w");
     if (file == NULL) {
         printf("Error opening/creating the file initial.txt.\n");
@@ -49,12 +59,6 @@ void initialCond(void){
     }*/
 
     {
-
-        // error handeling
-        if (E == NULL) {
-            printf("Memory allocation failed!\n");
-            return; 
-        }
 
         //randomly generted values for B's properties
         B.vMax = ranNum(180,200);

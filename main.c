@@ -11,7 +11,6 @@ int D = 10;// Default value for D. these values will only be used if initialisin
 int N = 10;// Default value for N. these values will only be used if initialising them in initialCond function fail for some reason.
 int k = 10;// Default value for k. these values will only be used if initialising them in initialCond function fail for some reason.
 int t = 5;// Default value for t. these values will only be used if initialising them in initialCond function fail for some reason.
-const char *path = "./battle_info";// to read and write data battle data
 btlShp B; //this structure is defined in glbl_vars.h
 escShp *E; //this structure is defined in glbl_vars.h
 Movement *move; //this structure is defined in glbl_vars.h
@@ -21,10 +20,29 @@ bool q = 0;// to decide whether to exit or not
 int main(){
     int iteration; // the number of times the battle has happend
     E = (escShp*) malloc(N * sizeof(escShp));// allocating dinamic memmory
+
+    // error handeling
+    if (E == NULL) {
+        printf("Memory allocation failed!\n");
+        return 1; 
+    }
+
     move = (Movement*) malloc(k * sizeof(Movement));// allocating dinamic memmory
+
+    // error handeling
+    if (move == NULL) {
+        printf("Memory allocation failed!\n");
+        return 1; 
+    }
 
     system("clear");// to clear the command line
 
+    // to change the working directory into battle_info
+    if (chdir("battle_info") != 0) {
+        perror("Error changing directory");
+        return 1;
+    }
+    
     do{
         iteration=0;
         genName(); // name the battle based on time. defined in random.c
@@ -56,7 +74,6 @@ int main(){
 
     free(E);
     free(move);
-    system("clear");// to clear the command line
 
     return 0;
 }

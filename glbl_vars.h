@@ -9,6 +9,8 @@
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
+#include <dirent.h>
+#include <unistd.h>
 
 //definig a location in the canvas
 typedef struct {
@@ -56,8 +58,6 @@ typedef struct {
     int ip; // this idicates the impact power of the E. if E hits B this value will redused from hp
     char indexNum[7];// for the unique ship identifiyer
 } escShp;
-
-extern const char *path; //this is where the datas of the past battles are saved. defined in main.c
 
 extern int N; // N is for the number of escort ships, defined in main.c
 extern int D; // D is for the size of the battle field, in kilo meter, defined in main.c
