@@ -123,4 +123,10 @@ void initialCond(void){
     prntDtl(file);
 
     fclose(file);
+
+    // to change the working directory into battle_info
+    if (chdir("..") != 0) {
+        perror("Error changing directory");
+        return ;
+    }
 }
