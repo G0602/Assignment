@@ -23,6 +23,7 @@ int main(){
 
     do{
 
+        genName(); // name the battle based on time
         initialCond();
         location();
         
@@ -40,6 +41,9 @@ int main(){
         if((iteration == k) && (B.status == 1)){
             printf("The Battle ship survived all iterations.\n");
         }
+
+        q= exitMenu(); //to check what the user want to do
+
     } while (q == 0);
 
     free(E);

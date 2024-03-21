@@ -63,6 +63,7 @@ extern int N; // N is for the number of escort ships, defined in main.c
 extern int D; // D is for the size of the battle field, in kilo meter, defined in main.c
 extern int k; // k is for the number of locations B need to move, defined in main.c
 extern int t; // to denote when the gun of B get stuck, defined in main.c
+extern char name[35]; // to store the name of the battle. defined in random.c
 
 extern btlShp B; //B is to indicate the battle ship, defined in main.c
 extern escShp *E; //an escShp class pointer to store the memory address of escort ship structure, defined in main.c
@@ -70,5 +71,7 @@ extern escShp *E; //an escShp class pointer to store the memory address of escor
 extern Movement *move;// pointer to store the memory adress of the location where B needs to move, defined in main.c
 
 extern bool mainMenu(void); //open the main menu of the programm. defiend in menu.c
+extern bool exitMenu(void); // ask the user weather they wnat to exit or do another battle. defined in menu.c
+extern void genName(void); // to create names for battles based on time. defined in random.c
 
 #endif
