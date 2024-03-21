@@ -3,6 +3,7 @@
 #include "../glbl_vars.h"
 #include "data.h"
 #include <dirent.h>
+#include <unistd.h>
 
 //need to make some changes depends on the function calling this
 void prntDtl(FILE *file){
@@ -48,39 +49,83 @@ void E_Dtl(int i, FILE *file){
     fprintf(file, "\tMinimum_Angle_of_the_Gun: %d'\n\n", E[i].angMin);
 }
 
-void btlList(void){
+char* btlList(void){
     int max = 100;
+    int temp;// to return the input
 
-    struct dirent *btl;
+    struct dirent *btl[max];
     DIR *dir = opendir(path);
 
     if (dir == NULL) {
         printf("Error! Unable to open battle_info directory.\n");
-        return;
+        return 0;
     }
 
 
 
     int count = 0;
-printf("\nFollowing battle datas are availablle:\n");
-    while ((btl = readdir(dir)) != NULL && count < max) {
-        if (btl->d_type == DT_DIR) { // Check if it's a directory
-                        if (strcmp(btl->d_name, ".") != 0 && strcmp(btl->d_name, "..") != 0) {// Skip the current and parent directories
-                printf("\t%s\n", btl->d_name);
-                count++;
-            }
+    printf("\nFollowing battle datas are availablle:\n");
+    while ((btl[count] = readdir(dir)) != NULL && count < max) {
+        if (strcmp(btl[count]->d_name, ".") != 0 && strcmp(btl[count]->d_name, "..") != 0) {// Skip the current and parent directories
+            printf("\t%d.%s\n", count+1, btl[count]->d_name);
+            count++;
         }
     }
 
     if(btl == NULL && count == 0){
-        printf("\tThere is no record of past battles.\n");
+        printf("\033[F"); //to overwrite the previouse line
+        printf("        There is no record of past battles.\n");
+        goto end;
     }
 
     if (count == max) {
         printf("\t...and more directories exist.\n");
     }
+
+    printf("Enter the number of the battle you want to see: ");
+    scanf(" %d", &temp);
     
+end:
+
     printf("\n");
 
     closedir(dir);
+
+    return btl[temp-1]->d_name;
+}
+
+void selBtl(char *btlPath){
+
+   if (chdir(btlPath) != 0) {
+        perror("chdir() error");
+        return;
+    }
+
+    int max = 2;
+
+    struct dirent *data[max];
+
+    DIR *dir = opendir(".");
+
+    if (dir == NULL) {
+        printf("Error! Unable to open battle data directory.\n");
+        return ;
+    }
+
+    int count = 0;
+    printf("\nFollowing battle datas are availablle:\n");
+    while ((data[count] = readdir(dir)) != NULL && count < max) {
+        if (data[count]->d_type == DT_REG) {// To only display txt files
+            printf("\t%d.%s\n", count+1, data[count]->d_name);
+            count++;
+        }
+    }
+
+
+    DIR *subDir = opendir("..");
+
+    if (subDir == NULL) {
+        printf("Unexpected error occured.\nWe are exiting the program.......\n\n");
+        exit(EXIT_FAILURE);
+    }
 }

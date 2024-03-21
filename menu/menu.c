@@ -2,13 +2,14 @@
 #include "menu.h"
 #include "../data/data.h"
 
+int seed; //seed value for the ran function
+
 int mo1;// main menu option
 int mo2;// simulation option
 int smo;// sub menu option
 int n; // to see the details of the Es
-int seed; //seed value for the ran function
-
 bool s; // for returning to menu
+char *temp; //to store the temperory pointer values
 
 bool mainMenu(void){
     
@@ -72,7 +73,11 @@ void opt2(void){
 
 //function to display files and select them
 void opt3(void){
-    btlList();
+    temp = btlList();
+    if (temp != NULL){
+        selBtl(temp);
+        temp = NULL;
+    }
     //not finisded
 }
 
