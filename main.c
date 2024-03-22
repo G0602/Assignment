@@ -36,7 +36,7 @@ int main(){
         return 1; 
     }
 
-    system("clear");// to clear the command line
+    //system("clear");// to clear the command line
 
     // to change the working directory into battle_info
     if (chdir("battle_info") != 0) {

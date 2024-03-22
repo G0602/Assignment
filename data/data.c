@@ -58,7 +58,10 @@ char* btlList(void){
 
     struct dirent *btl[max];
     DIR *dir = opendir(".");
+
+    printf("\nYou are now in:\n");
     system("pwd");
+    printf("\n");
 
     if (dir == NULL) {
         printf("Error! Unable to open battle_info directory.\n");
@@ -106,35 +109,60 @@ end:
 void selBtl(char *btlPath){
 
    if (chdir(btlPath) != 0) {
-        printf("\n");
+        perror("No such file exist.\n");
         return;
     }
 
-    int max = 2;
+    printf("\nYou are now in:\n");
+    system("pwd");
+    printf("\n");
+
+    int max = 3;
+    int temp = 0;
+    int count = 0;
 
     struct dirent *data[max];
 
     DIR *dir = opendir(".");
 
     if (dir == NULL) {
-        printf("Error! Unable to open battle data directory.\n");
+        perror("Error! Unable to open battle data directory.\n");
         return ;
     }
 
-    int count = 0;
+
     printf("\nFollowing battle datas are availablle:\n");
     while ((data[count] = readdir(dir)) != NULL && count < max) {
-        if (data[count]->d_type == DT_REG) {// To only display txt files
+        if (data[count]->d_type == DT_REG) {// to only display txt files
             printf("\t%d.%s\n", count+1, data[count]->d_name);
             count++;
         }
     }
 
+    if(data[count] == NULL && count == 0){
+        printf("\033[F"); //to overwrite the previouse line
+        printf("        There is no record of this battle.\n");
+    } else if (count > 0){
 
-    DIR *subDir = opendir("..");
+        do{
+        printf("Enter the number of the file you want to see: ");
+        scanf(" %d", &temp);
+        }while (!(temp >=1 && temp <= count));
 
-    if (subDir == NULL) {
-        printf("Unexpected error occured.\nWe are exiting the program.......\n\n");
+        char command[strlen("vi -R ") + strlen(data[temp-1]->d_name) + 1];
+        sprintf(command, "%s%s", "vi -R ",data[temp-1]->d_name);//command to open the file in read only mode
+        // Check if the command executed successfully
+        if (system(command) == -1) {
+            printf("Error opening the file.\n");
+        }
+    }
+
+    printf("\n");
+
+    closedir(dir);
+
+    if (chdir("..") != 0) {
+        perror("Unexpected error\n");
         exit(EXIT_FAILURE);
     }
 }
