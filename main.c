@@ -19,6 +19,7 @@ bool q = 0;// to decide whether to exit or not
 
 int main(){
     int iteration; // the number of times the battle has happend
+    
     E = (escShp*) malloc(N * sizeof(escShp));// allocating dinamic memmory
 
     // error handeling
