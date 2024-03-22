@@ -39,9 +39,11 @@ int main(){
     //system("clear");// to clear the command line
 
     // to change the working directory into battle_info
+    check:
     if (chdir("battle_info") != 0) {
-        perror("Error changing directory");
-        return 1;
+        if(system("mkdir battle_info"))//create the file if it doesn't exist
+            return 1;// return if fail to create file
+        goto check;
     }
     
     do{
