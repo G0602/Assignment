@@ -90,7 +90,7 @@ bool subMenu(void){
     printf("\t1. Battle ship Properties\n");
     printf("\t2. Escort ship Properties\n");
     printf("\t3. Seed value\n");
-    printf("\t4. Change settigs");
+    printf("\t4. Change settigs\n");
     printf("\t5. Go back\n");
     printf("\t6. Return to Main Menu\n\n");
     printf("Enter Your Choice: ");

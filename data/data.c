@@ -3,6 +3,7 @@
 #include "../glbl_vars.h"
 #include "data.h"
 #include "../initial/initial.h"
+#include "../canvas/canvas.h"
 
 //this function will write the details of B and all Es in a givven pointer location
 void prntDtl(FILE *file){
@@ -152,5 +153,6 @@ void getInfo(void){
 
     }while(D <= 0 || N <= 0);
 
-    initialCond(1);
+    initialCond(1);//save ititial condition after changes
+    location();//to generate new loctions after changes
 }

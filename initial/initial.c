@@ -5,9 +5,10 @@
 #include"../glbl_vars.h"
 #include "../data/data.h"
 
+int type =1;//to get the user input,default is 1
+
 //function to get the initial condition and save it in a text file called initial.txt
 void initialCond(bool in){
-    int type;//to get the user input
 
     char command[7 + strlen(name)];//making a string  named command based on the length of the battle name
     sprintf(command, "%s%s","mkdir ", name );
@@ -32,25 +33,25 @@ void initialCond(bool in){
     B.angMax = 90;
     B.angMin = 0;
 
-    if (in == 0){
+    if (in == 1){
         type_choice:
         printf("\n\t1.USS Iowa (BB-61)\n\t2.MS King George V\n\t3.Richelieu\n\t4.Sovetsky Soyuz-class\n");
         printf("\nEnter the type of the battle ship you want to observe from the list above:");
         scanf("%d", &type);
+    }
 
-        switch(type){
-            case 1: B.type = 'U';
-                    break;
-            case 2: B.type = 'M';
-                    break;
-            case 3: B.type = 'R';
-                    break;
-            case 4: B.type = 'S';
-                    break;
-            default: printf("\nNot a valid type.Chose again.\n");
-                    type = 0;
-                    goto type_choice;// fail safe
-        }
+    switch(type){
+        case 1: B.type = 'U';
+                break;
+        case 2: B.type = 'M';
+                break;
+        case 3: B.type = 'R';
+                break;
+        case 4: B.type = 'S';
+                break;
+        default: printf("\nNot a valid type.Chose again.\n");
+                type = 0;
+                goto type_choice;// fail safe
     }
 
     B.position.x = ranNum(0,D);

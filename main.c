@@ -10,7 +10,7 @@
 int D = 1000;// initial value for D. these values will only be used if initialising them in initialCond function fail for some reason.
 int N = 1000;// initial value for N. these values will only be used if initialising them in initialCond function fail for some reason.
 int k = 1000;// initial value for k. these values will only be used if initialising them in initialCond function fail for some reason.
-int t = 500;// initial value for t. these values will only be used if initialising them in initialCond function fail for some reason.
+int t = 500; // initial value for t. these values will only be used if initialising them in initialCond function fail for some reason.
 btlShp B; //this structure is defined in glbl_vars.h
 escShp *E; //this structure is defined in glbl_vars.h
 Movement *move; //this structure is defined in glbl_vars.h
