@@ -69,7 +69,7 @@ int main(){
             iteration++;
         } while((iteration < k) && (B.status == 1));// the loop will break if the B get destroyed or it has visited all the loctions
 
-        if((iteration == k) && (B.status == 1)){
+        if(B.status == 1){
             printf("The Battle ship survived all iterations.\n\n");
         } else {
             printf("Better luck next time.\n\n");

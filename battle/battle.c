@@ -37,6 +37,11 @@ int battle(int it){
         return 1;
     }
 
+    if (it == 1){
+        tTime = 0;// reset time for every new battle
+        tKill = 0;// reset kill count for every new battle
+    }
+
     printf("Current itteration no.%d:\nCurrent location( %d, %d).\n", it, B.position.x, B.position.y);
     fprintf(file1, "Current itteration no.%d:\n", it);
     
@@ -65,8 +70,8 @@ int battle(int it){
 
     //the following mesage will print after the last iteration
     if(it == k || B.status == 0){
-        printf("The total time took to complete all iterations is %.2f.\nIn total B has destroyed %d Es.\nRemaining durability of the battleship is %d%%\n\n", tTime, tKill, B.hp);
-        fprintf(file2, "The total time took to complete all iterations is %.2f.\nIn total B has destroyed %d Es.\nRemaining durability of the battleship is %d%%\n\n", tTime, tKill, B.hp);
+        printf("The total time took to complete all iterations is %.2fs.\nIn total B has destroyed %d Es.\nRemaining durability of the battleship is %d%%\n\n", tTime, tKill, B.hp);
+        fprintf(file2, "The total time took to complete all iterations is %.2fs.\nIn total B has destroyed %d Es.\nRemaining durability of the battleship is %d%%\n\n", tTime, tKill, B.hp);
    
         if (chdir("..") != 0) {//going back to battle_info
             perror("Error changing directory");
@@ -128,7 +133,7 @@ void canEAtk(int i){
     }
 }
 
-//this function check whether the B can attack E and print the time and count for this attack
+//this function check whether the B can attack E and print the time and kill count for this attack
 void canBAtk(FILE *file){
     killCount = 0;
     killTime = 0;
@@ -140,7 +145,9 @@ void canBAtk(FILE *file){
             }
             E[i].status = 0;
             killCount++;
-            killTime += atkTime(i);
+            if(killTime < atkTime(i)){
+                killTime = atkTime(i);
+            }
             printf("\t%s( %d, %d)\n", E[i].indexNum, E[i].position.x, E[i].position.y);
             fprintf(file, "%s\n", E[i].indexNum);
         }
