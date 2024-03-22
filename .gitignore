@@ -3,3 +3,7 @@
 
 # Ignore output files
 *.txt
+
+.pdf
+
+.odt
