@@ -9,5 +9,6 @@ void B_Dtl( FILE *file); // prints the details of B to initial.txt file. defiend
 void E_Dtl(int i, FILE *file); // prints the details of E to initial.txt file. defiend in data.c
 char* btlList(void); //function to list all the past battles. defiend in data.c
 void selBtl(char *btlPath); //function to open a file or a folder. defiend in data.c
+void getInfo(void); // function to get user input data. defined in data.c
 
 #endif

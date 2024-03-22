@@ -86,28 +86,17 @@ void opt3(void){
 bool subMenu(void){
     last:
     int smo = 0;// sub menu option
-    char cho; //to get user decision
     printf("Setup Options:\n");
     printf("\t1. Battle ship Properties\n");
     printf("\t2. Escort ship Properties\n");
     printf("\t3. Seed value\n");
-    printf("\t4. Go back\n");
-    printf("\t5. Return to Main Menu\n\n");
+    printf("\t4. Change settigs");
+    printf("\t5. Go back\n");
+    printf("\t6. Return to Main Menu\n\n");
     printf("Enter Your Choice: ");
     scanf(" %d", &smo);
     switch(smo){
         case 1: B_Dtl( stdout);
-                cho1:
-                printf("Would you like to change anything?(y/n)\n");
-                scanf("%c",&cho);
-                if(cho == 'y'){
-
-                } else if (cho == 'n'){
-                    n = '\0';
-                } else {
-                    printf("\nNot a valid choice.\n");
-                    goto cho1;
-                }
                 break;
 
         case 2: printf("Enter the number of the escort ship you want to see the details of (1 - %d).\nEnter 0 if you want to see the details of all the escort ships: ", N);
@@ -118,17 +107,6 @@ bool subMenu(void){
                     }
                     E_Dtl(i, stdout);
                 }
-                cho2:
-                printf("Would you like to change anything?(y/n)\n");
-                scanf("%c", &cho);
-                if(cho == 'y'){
-
-                } else if (cho == 'n'){
-                    n = '\0';
-                } else {
-                    printf("\nNot a valid choice.\n");
-                    goto cho2;
-                }
                 break;
 
         case 3: printf("Enter the new seed value for the random number generator:\n");
@@ -136,9 +114,12 @@ bool subMenu(void){
                 srand(seed);
                 break;
 
-        case 4: break;
+        case 4: getInfo();
+                break;
 
-        case 5: return 1;
+        case 5: break;
+
+        case 6: return 1;
 
         default: printf("\nWrong entry please enter the correct number.\n");
                 goto last;

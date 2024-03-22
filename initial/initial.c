@@ -6,7 +6,7 @@
 #include "../data/data.h"
 
 //function to get the initial condition and save it in a text file called initial.txt
-void initialCond(void){
+void initialCond(bool in){
     int type;//to get the user input
 
     char command[7 + strlen(name)];//making a string  named command based on the length of the battle name
@@ -24,20 +24,6 @@ void initialCond(void){
         printf("Error opening/creating the file initial.txt.\n");
     }
 
-    
-    do{
-    printf("\nEnter the size of the battle field: ");
-    scanf("%d", &D);
-
-    printf("\nEnter the number of the escort ships you want to have in this simulation: ");
-    scanf("%d", &N);
-
-    if(D <= 0 || N <= 0){
-        printf("\nThe vlues you just enterd are not valid.\nPlease make sure they bothe are integer greater than 0.\n");
-    }
-
-    }while(D <= 0 || N <= 0);
-
     k = ranNum(0,D);
     t = ranNum(0,k);
 
@@ -46,26 +32,25 @@ void initialCond(void){
     B.angMax = 90;
     B.angMin = 0;
 
-    type_choice:
-    printf("\n\t1.USS Iowa (BB-61)\n\t2.MS King George V\n\t3.Richelieu\n\t4.Sovetsky Soyuz-class\n");
-    printf("\nEnter the type of the battle ship you want to observe from the list above:");
-    scanf("%d", &type);
+    if (in == 0){
+        type_choice:
+        printf("\n\t1.USS Iowa (BB-61)\n\t2.MS King George V\n\t3.Richelieu\n\t4.Sovetsky Soyuz-class\n");
+        printf("\nEnter the type of the battle ship you want to observe from the list above:");
+        scanf("%d", &type);
 
-printf("good");
-printf("%d,%d,%d,%d,%d" ,D,N,k,t,type);//error check
-
-    switch(type){
-        case 1: B.type = 'U';
-                break;
-        case 2: B.type = 'M';
-                break;
-        case 3: B.type = 'R';
-                break;
-        case 4: B.type = 'S';
-                break;
-        default: printf("\nNot a valid type.Chose again.\n");
-                 type = 0;
-                 goto type_choice;// fail safe
+        switch(type){
+            case 1: B.type = 'U';
+                    break;
+            case 2: B.type = 'M';
+                    break;
+            case 3: B.type = 'R';
+                    break;
+            case 4: B.type = 'S';
+                    break;
+            default: printf("\nNot a valid type.Chose again.\n");
+                    type = 0;
+                    goto type_choice;// fail safe
+        }
     }
 
     B.position.x = ranNum(0,D);

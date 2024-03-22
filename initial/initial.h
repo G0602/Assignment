@@ -5,7 +5,8 @@
 #define INITIAL_H
 
 #include <stdio.h>
+#include <stdbool.h>
 
-void initialCond(void);
+void initialCond(bool in);
 
 #endif

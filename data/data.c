@@ -2,11 +2,12 @@
 
 #include "../glbl_vars.h"
 #include "data.h"
+#include "../initial/initial.h"
 
 //this function will write the details of B and all Es in a givven pointer location
 void prntDtl(FILE *file){
-    fprintf(file, "canvasSize(D): %d km\n", D);
-    fprintf(file, "escortNum: %d\n\n", N);
+    fprintf(file, "Size_of_the_battle_field(D): %d km\n", D);
+    fprintf(file, "Number_of_escort_ship: %d\n\n", N);
 
     B_Dtl( file);
 
@@ -104,7 +105,7 @@ end:
 void selBtl(char *btlPath){
 
    if (chdir(btlPath) != 0) {
-        perror("chdir() error");
+        printf("\n");
         return;
     }
 
@@ -135,4 +136,21 @@ void selBtl(char *btlPath){
         printf("Unexpected error occured.\nWe are exiting the program.......\n\n");
         exit(EXIT_FAILURE);
     }
+}
+
+void getInfo(void){
+      do{
+    printf("\nEnter the size of the battle field: ");
+    scanf("%d", &D);
+
+    printf("\nEnter the number of the escort ships you want to have in this simulation: ");
+    scanf("%d", &N);
+
+    if(D <= 0 || N <= 0){
+        printf("\nThe vlues you just enterd are not valid.\nPlease make sure they bothe are integer greater than 0.\n");
+    }
+
+    }while(D <= 0 || N <= 0);
+
+    initialCond(1);
 }
