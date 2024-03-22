@@ -1,6 +1,7 @@
 #include "../glbl_vars.h"
 #include "menu.h"
 #include "../data/data.h"
+#include "../initial/initial.h"
 
 int seed; //seed value for the ran function
 int n; // to see the details of the Es

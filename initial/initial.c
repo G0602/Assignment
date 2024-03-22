@@ -4,6 +4,7 @@
 #include "initial.h"
 #include"../glbl_vars.h"
 #include "../data/data.h"
+#include "../canvas/canvas.h"
 
 int type =1;//to get the user input,default is 1
 
@@ -109,4 +110,22 @@ void initialCond(bool in){
         perror("Error changing directory");
         return ;
     }
+}
+
+void getInfo(void){
+      do{
+    printf("\nEnter the size of the battle field: ");
+    scanf("%d", &D);
+
+    printf("\nEnter the number of the escort ships you want to have in this simulation: ");
+    scanf("%d", &N);
+
+    if(D <= 0 || N <= 0){
+        printf("\nThe vlues you just enterd are not valid.\nPlease make sure they bothe are integer greater than 0.\n");
+    }
+
+    }while(D <= 0 || N <= 0);
+
+    initialCond(1);//save ititial condition after changes
+    location();//to generate new loctions after changes
 }

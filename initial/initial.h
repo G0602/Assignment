@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-void initialCond(bool in);
+void initialCond(bool in);//function to generate random values for nessesary things. defined in initial.c
+void getInfo(void); // function to get user input data. defined in initial.c
 
 #endif
