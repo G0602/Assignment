@@ -14,14 +14,23 @@ int killCount = 0;//number of E destroyed at the attack in one location
 float killTime = 0;//time took to complete the attack in one location
 
 int battle(int it){
-    
-    FILE *file1 = fopen("destruction.txt", "w");
+    FILE *file1;
+    if (it == 0){
+        if (chdir(name) != 0) {//changing the working directory to the battle file
+            perror("Error changing directory");
+            return 1;//error handling
+        }
+        file1 = fopen("destruction.txt", "w");
+    } else {
+        file1 = fopen("destruction.txt", "a");
+    }
+
     if (file1 == NULL) {
         printf("Error opening the file destruction.txt.\n");
         return 1;
     }
 
-    FILE *file2 = fopen("finale.txt", "w");
+    FILE *file2 = fopen("results.txt", "w");
     if (file2 == NULL) {
         printf("Error opening the file finale.txt.\n");
         return 1;
@@ -56,9 +65,14 @@ int battle(int it){
     //the following mesage will print after the last iteration
     if(it == k || B.status == 0){
         printf("The total time took to complete all iterations is %.2f.\nIn total B has destroyed %d Es.\nRemaining durability of the battleship is %d%%\n\n", tTime, tKill, B.hp);
-        fprintf(file1, "The total time took to complete all iterations is %.2f.\nIn total B has destroyed %d Es.\nRemaining durability of the battleship is %d%%\n\n", tTime, tKill, B.hp);
+        fprintf(file2, "The total time took to complete all iterations is %.2f.\nIn total B has destroyed %d Es.\nRemaining durability of the battleship is %d%%\n\n", tTime, tKill, B.hp);
+   
+        if (chdir("..") != 0) {//going back to battle_info
+            perror("Error changing directory");
+            return 1;//error handling
+        }
     }
-
+    
     fclose(file1);
     fclose(file2);
 
