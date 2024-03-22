@@ -25,14 +25,12 @@ void initialCond(void){
     }
 
     
-    //i want to add a if condition to select whether the user want to inpu the values or get random values.
-    
     do{
     printf("\nEnter the size of the battle field: ");
-    scanf("%d ", &D);
+    scanf("%d", &D);
 
     printf("\nEnter the number of the escort ships you want to have in this simulation: ");
-    scanf("%d ", &N);
+    scanf("%d", &N);
 
     if(D <= 0 || N <= 0){
         printf("\nThe vlues you just enterd are not valid.\nPlease make sure they bothe are integer greater than 0.\n");
@@ -40,7 +38,8 @@ void initialCond(void){
 
     }while(D <= 0 || N <= 0);
 
-
+    k = ranNum(0,D);
+    t = ranNum(0,k);
 
     //randomly generted values for B's properties
     B.vMax = ranNum(180,200);
@@ -48,10 +47,14 @@ void initialCond(void){
     B.angMin = 0;
 
     type_choice:
-    printf("Enter the type of the battle ship you want to observe: ");
+    printf("\n\t1.USS Iowa (BB-61)\n\t2.MS King George V\n\t3.Richelieu\n\t4.Sovetsky Soyuz-class\n");
+    printf("\nEnter the type of the battle ship you want to observe from the list above:");
     scanf("%d", &type);
 
-    switch(type ){
+printf("good");
+printf("%d,%d,%d,%d,%d" ,D,N,k,t,type);//error check
+
+    switch(type){
         case 1: B.type = 'U';
                 break;
         case 2: B.type = 'M';
@@ -61,8 +64,10 @@ void initialCond(void){
         case 4: B.type = 'S';
                 break;
         default: printf("\nNot a valid type.Chose again.\n");
+                 type = 0;
                  goto type_choice;// fail safe
     }
+
     B.position.x = ranNum(0,D);
     B.position.y = ranNum(0,D);
     B.hp = 100;
