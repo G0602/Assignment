@@ -36,7 +36,9 @@ int main(){
         return 1; 
     }
 
-    system("clear");// to clear the command line
+    if (system("clear") != 0) {// to clear the terminal
+        printf("Failed to clear the terminal window.\n");
+    }
 
     // to change the working directory into battle_info
     check:

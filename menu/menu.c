@@ -3,6 +3,10 @@
 #include "../data/data.h"
 #include "../initial/initial.h"
 
+// ANSI escape codes for text color
+#define ANSI_COLOR_YELLOW  "\x1b[33m"
+#define ANSI_COLOR_RESET   "\x1b[0m"
+
 int seed; //seed value for the ran function
 int n; // to see the details of the Es
 bool s; // for returning to menu
@@ -69,8 +73,43 @@ bool opt1(void){
 }
 
 void opt2(void){
-    //function to display instructions
-    printf("Upcomming cange\n");
+
+    printf("\nNaval Battle Simulator Instructions\n\n");
+    
+    printf("Initialization\n");
+    printf("    Upon launching, the simulator will display the main menu, providing options to initialize the battlefield, simulate battles, and explore additional features.\n");
+    printf("    Enter the required parameters as prompted, including:\n");
+    printf("        The size of the canvas area (D), specifying the square dimension of the battlefield.\n");
+    printf("        The number of escort ships present on the battlefield (N).\n");
+    printf("        Details of the battleship (B) and each escort ship (E) including:\n");
+    printf("            Maximum and minimum vertical angles.\n");
+    printf("            Maximum shell velocity.\n");
+    printf("            Type of each escort ship.\n");
+    printf("            Initial positions of the battleship and escort ships.\n\n");
+
+    printf("Simulating the Battle\n");
+    printf("    Once initialization is complete, the simulator will simulate the naval battle based on the provided conditions. Those conditions can be randomly generated or inputted by the user.\n");
+    printf("    The battlefield has D=1000, N=1000 as the default values, but the user can change them if they want.\n");
+    printf("    The battleship (B) will attempt to destroy as many escort ships (E) as possible while minimizing damage from enemy attacks.\n\n");
+
+    printf("Simulation Results\n");
+    printf("    After the simulation concludes, you will receive detailed information about the outcome of the battle.\n");
+    printf("    If the battleship is sunk during the simulation, the index number of the escort ship responsible will be displayed.\n");
+    printf("    Details of all escort ships hit by the battleship, including index, time of impact, and any other relevant information, will be provided.\n");
+    printf("    The final conditions of the battlefield will be saved to a text file for reference.\n\n");
+
+    printf("Exploring Additional Features\n");
+    printf("    The simulator includes various features to enhance the simulation experience.\n");
+    printf("    Users can explore different scenarios by adjusting initial conditions and parameters.\n\n");
+
+    printf("Exiting the Simulator\n");
+    printf("    You can exit the simulator by selecting the Exit option in the main menu.\n");
+    printf(ANSI_COLOR_YELLOW);
+    printf("!!!!!!!!!!Displays past simulation results by accessing text files. Each text file will be shown using vi or vim, and users can quit using :q.!!!!!!!!!!\n");
+    printf("!!!!!!!!!!I have written this proggram using some linux terminal commands so this might not work on windows or mac.!!!!!!!!!!\n");
+    printf(ANSI_COLOR_RESET);
+
+    printf("\n\n");
 }
 
 //function to display files and select them
@@ -80,7 +119,6 @@ void opt3(void){
         selBtl(temp);
         temp = NULL;
     }
-    //not finisded
 }
 
 
