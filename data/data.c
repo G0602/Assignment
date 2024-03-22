@@ -20,6 +20,7 @@ void prntDtl(FILE *file){
 void B_Dtl(FILE *file){
     fprintf(file, "BATTLE_SHIP's Details:\n");
     fprintf(file, "\tMaximum_Shell_velocity: %d m/s\n", B.vMax);
+    fprintf(file, "\tName: %s\n", B.shpName);
     fprintf(file, "\tType: %c\n", B.type);
     fprintf(file, "\tDurability: %d%%\n", B.hp);
     if(B.status == 1){
@@ -35,6 +36,7 @@ void B_Dtl(FILE *file){
 //this function will write the details of one E in a givven pointer location by gettig the number of E and the pointer as the input
 void E_Dtl(int i, FILE *file){
     fprintf(file, "ESCORT_SHIP_%d's Details:\n", i + 1);
+    fprintf(file, "\tName: %s\n", E[i].shpName);
     fprintf(file, "\tType: %c\n", E[i].type);
     fprintf(file, "\tImpact_power: %.2f\n", (float)(E[i].type/100));
     if(E[i].status == 1){

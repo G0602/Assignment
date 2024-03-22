@@ -43,12 +43,16 @@ void initialCond(bool in){
 
     switch(type){
         case 1: B.type = 'U';
+				strcpy(B.shpName, "USS Iowa (BB-61)");
                 break;
         case 2: B.type = 'M';
+				strcpy(B.shpName, "MS King George V");
                 break;
         case 3: B.type = 'R';
+				strcpy(B.shpName, "Richelieu");
                 break;
         case 4: B.type = 'S';
+				strcpy(B.shpName, "Sovetsky Soyuz-class");
                 break;
         default: printf("\nNot a valid type.Chose again.\n");
                 type = 0;
@@ -67,22 +71,27 @@ void initialCond(bool in){
         case 0: E[i].type = 'A';
                 E[i].angRange = 20;
                 E[i].ip = 8;
+				strcpy(E[i].shpName, "1936A-class Destroyer");
                 break;
         case 1: E[i].type = 'B';
                 E[i].angRange = 30;
                 E[i].ip = 6;
+				strcpy(E[i].shpName, "Gabbiano-class Corvette");
                 break;
         case 2: E[i].type = 'C';
                 E[i].angRange = 25;
                 E[i].ip = 7;
+				strcpy(E[i].shpName, "Matsu-class Destroye");
                 break;
         case 3: E[i].type = 'D';
                 E[i].angRange = 50;
                 E[i].ip = 5;
+				strcpy(E[i].shpName, "F-class Escort Ships");
                 break;
         case 4: E[i].type = 'E';
                 E[i].angRange = 70;
                 E[i].ip = 4;
+				strcpy(E[i].shpName, "Japanese Kaibōkan");
                 break;
         }
 

@@ -34,6 +34,7 @@ typedef struct {
 typedef struct {
     Point position;// coordinate of the B in the canvas
     char type;// type of B
+    char shpName[25];//name of B
     Minmax range; // attack range of B, in kilo meter
     float maxVelMinRng; // minimum distance where B can fire at maximum shell velocity
     int vMax;// maximum velocity of B's shell, will be in meter per second
@@ -46,7 +47,8 @@ typedef struct {
 // defining the structure of the  escort ships
 typedef struct {
     Point position;// coordinate of the E in the canvas
-    char type; // type of the E
+    char type; // type of E
+    char shpName[25];//name of E
     int vMax;// maximum velocity of E's shell, will be in meter per second
     int vMin;// minimum velocity of E's shell, will be in meter per second
     int angRange; //the vertical range of the E, in degree
