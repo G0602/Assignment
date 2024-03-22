@@ -15,7 +15,8 @@ float killTime = 0;//time took to complete the attack in one location
 
 int battle(int it){
     FILE *file1;
-    if (it == 0){
+    if (it == 1){
+
         if (chdir(name) != 0) {//changing the working directory to the battle file
             perror("Error changing directory");
             return 1;//error handling

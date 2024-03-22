@@ -47,7 +47,7 @@ int main(){
     do{
         iteration=0;
         genName(); // name the battle based on time. defined in random.c
-        initialCond(); //generating the initial conditions randomly. defined in initial.c
+        initialCond(0); //generating the initial conditions randomly. defined in initial.c
         location(); //this will generate the locations the B needs to move randomly. defined in canvas.c
         
         q = mainMenu();// if this function return 1 the programm will exit. defined in menu.c
@@ -58,7 +58,7 @@ int main(){
         printf("%s begins!!!!!!!!!\n", name);
         do{
             if (battle(iteration + 1)){
-                perror("battle function didn't work properly")
+                perror("battle function didn't work properly");
                 exit (EXIT_FAILURE);
             }
             motion();
