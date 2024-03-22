@@ -57,7 +57,10 @@ int main(){
         
         printf("%s begins!!!!!!!!!\n", name);
         do{
-            battle(iteration + 1);
+            if (battle(iteration + 1)){
+                perror("battle function didn't work properly")
+                exit (EXIT_FAILURE);
+            }
             motion();
             iteration++;
         } while((iteration < k) && (B.status == 1));// the loop will break if the B get destroyed or it has visited all the loctions

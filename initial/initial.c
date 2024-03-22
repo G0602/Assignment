@@ -9,7 +9,7 @@
 void initialCond(void){
     int type;//to get the user input
 
-    char command[6 + strlen(name)];//making a string  named command based on the length of the battle name
+    char command[7 + strlen(name)];//making a string  named command based on the length of the battle name
     sprintf(command, "%s%s","mkdir ", name );
     system (command);
 
