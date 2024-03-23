@@ -141,6 +141,7 @@ void canEAtk(int i){
 
 //this function check whether the B can attack E and print the time and kill count for this attack
 void canBAtk(FILE *file){
+    int fireCount = 0; // to keep track of how many times B has fired in this location
     killCount = 0;
     killTime = 0;
     for(int i = 0; i < N; i++){
@@ -151,11 +152,12 @@ void canBAtk(FILE *file){
             }
             E[i].status = 0;
             killCount++;
-            if(killTime < atkTime(i)){
-                killTime = atkTime(i);
+            if(killTime < atkTime(i) + (B.loadTime * fireCount)){ //to figure out the longest time it took to attack
+                killTime = atkTime(i) + (B.loadTime * fireCount);
             }
             printf("\t%s( %d, %d)\n", E[i].indexNum, E[i].position.x, E[i].position.y);
             fprintf(file, "%s\n", E[i].indexNum);
+            fireCount++;
         }
     }
     tTime += killTime;
