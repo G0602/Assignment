@@ -144,6 +144,9 @@ void canBAtk(FILE *file){
     int fireCount = 0; // to keep track of how many times B has fired in this location
     killCount = 0;
     killTime = 0;
+
+    int *targets = choseTarget();//targets to attack based on their distance
+    
     for(int i = 0; i < N; i++){
         if(E[i].dist <= B.range.max && E[i].status == 1){
             if (killCount == 0){ 
@@ -162,4 +165,48 @@ void canBAtk(FILE *file){
     }
     tTime += killTime;
     tKill += killCount;
+
+    free(targets);// freeing the memory alocated in the function choseTarget
+}
+
+//function to chose and order the targets acording to their distance
+int* choseTarget(void){
+    int *targ;//to store the targets in order
+    int l =0;// to count the number of targets in this location
+    for(int i = 0; i < N; i++){// this will count the  targets in range
+        if(E[i].dist <= B.range.max && E[i].status == 1){
+            l++;
+        }
+    }
+
+    targ = (int*)malloc(l * sizeof(int));
+    if (targ == NULL) {
+        perror("Memory allocation failed in choseTarget function\n");
+        exit(EXIT_FAILURE);
+    }
+
+    int j = 0; //to store the targets in targ array
+    for(int i = 0; i < N; i++){ // this will store the numbers of the E within the range of B
+        if(E[i].dist <= B.range.max && E[i].status == 1){
+            targ[j] = i;
+            j++;
+        }
+    }
+
+    for (int i = 0; i < l - 1; i++) {// Bubble sort to sort targ elements. found this function from internet
+        for (int k = 0; k < l - i - 1; k++) {
+            if (E[targ[k]].dist < E[targ[k + 1]].dist) {
+                swap(&targ[k], &targ[k + 1]);
+            }
+        }
+    }
+
+    return targ;
+}
+
+// Function to swap two integers
+void swap(int* a, int* b){
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }

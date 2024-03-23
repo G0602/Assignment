@@ -10,5 +10,7 @@ float rangeF(int a, int v);
 void canEAtk(int i);
 void canBAtk(FILE *file);
 float atkTime(int i);
+int* choseTarget(void);
+void swap(int* a, int* b);
 
 #endif
