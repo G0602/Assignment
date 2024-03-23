@@ -1,4 +1,4 @@
-//this file contains the functions required to editing and writing data in a text file
+//this file contains the functions required to editing and writing data in a text file and on the screen
 
 #include "../glbl_vars.h"
 #include "data.h"
@@ -23,6 +23,7 @@ void B_Dtl(FILE *file){
     fprintf(file, "\tName: %s\n", B.shpName);
     fprintf(file, "\tType: %c\n", B.type);
     fprintf(file, "\tDurability: %d%%\n", B.hp);
+    fprintf(file, "\tRe-load_time: %.2f\n", B.loadTime);
     if(B.status == 1){
         fprintf(file, "\tstatus: %s\n", "Available");
     } else {
@@ -39,6 +40,7 @@ void E_Dtl(int i, FILE *file){
     fprintf(file, "\tName: %s\n", E[i].shpName);
     fprintf(file, "\tType: %c\n", E[i].type);
     fprintf(file, "\tImpact_power: %.2f\n", (float)(E[i].type/100));
+    fprintf(file, "\tRe-load_time: %.2f\n", E[i].loadTime);
     if(E[i].status == 1){
         fprintf(file, "\tstatus: %s\n", "Available");
     } else {
@@ -163,7 +165,7 @@ void selBtl(char *btlPath){
     closedir(dir);
 
     if (chdir("..") != 0) {
-        perror("Unexpected error\n");
+        perror("Unexpected error while changing directory.\n");
         exit(EXIT_FAILURE);
     }
 }
