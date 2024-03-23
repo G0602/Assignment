@@ -146,23 +146,33 @@ void canBAtk(FILE *file){
     killTime = 0;
 
     int *targets = choseTarget();//targets to attack based on their distance
-    
-    for(int i = 0; i < N; i++){
-        if(E[i].dist <= B.range.max && E[i].status == 1){
-            if (killCount == 0){ 
-                printf("Following ships has been destroyed by B:\n");
-                fprintf(file, "Following ships has been destroyed by B:\n");
-            }
-            E[i].status = 0;
-            killCount++;
-            if(killTime < atkTime(i) + (B.loadTime * fireCount)){ //to figure out the longest time it took to attack
-                killTime = atkTime(i) + (B.loadTime * fireCount);
-            }
-            printf("\t%s( %d, %d)\n", E[i].indexNum, E[i].position.x, E[i].position.y);
-            fprintf(file, "%s\n", E[i].indexNum);
-            fireCount++;
-        }
+
+
+    if (targets == NULL){// this is true if there is no targets in current location
+        return;
     }
+
+    int m = targets[0]; // to get the number of elements in target
+    int i;
+
+    for(int j = 1; j < m ; j++){
+
+        i = targets[j];
+
+        if (killCount == 0){ 
+            printf("\nFollowing ships has been destroyed by B:\n");
+            fprintf(file, "\nFollowing ships has been destroyed by B:\n");
+        }
+        E[i].status = 0;
+        killCount++;
+        if(killTime < atkTime(i) + (B.loadTime * fireCount)){ //to figure out the longest time it took to attack
+            killTime = atkTime(i) + (B.loadTime * fireCount);
+        }
+        printf("\t%s( %d, %d)\n", E[i].indexNum, E[i].position.x, E[i].position.y);
+        fprintf(file, "%s\n", E[i].indexNum);
+        fireCount++;
+    }
+
     tTime += killTime;
     tKill += killCount;
 
@@ -178,14 +188,20 @@ int* choseTarget(void){
             l++;
         }
     }
+    
+    if(l == 0){ // this will happen if there is no targets
+        return NULL;
+    }
 
-    targ = (int*)malloc(l * sizeof(int));
-    if (targ == NULL) {
+    targ = (int*)malloc((l + 1)* sizeof(int));
+    if (targ == NULL) {// error handling
         perror("Memory allocation failed in choseTarget function\n");
         exit(EXIT_FAILURE);
     }
 
-    int j = 0; //to store the targets in targ array
+    targ[0] = l + 1;// this is to return the size of the array with the array
+
+    int j = 1; //to store the targets in targ array
     for(int i = 0; i < N; i++){ // this will store the numbers of the E within the range of B
         if(E[i].dist <= B.range.max && E[i].status == 1){
             targ[j] = i;
