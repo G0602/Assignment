@@ -30,9 +30,9 @@ void initialCond(bool in){
     t = ranNum(0,k);
 
     //randomly generted values for B's properties
-    B.vMax = ranNum(180,200);
-    B.angMax = 90;
-    B.angMin = 0;
+    B.vel.max = ranNum(180,200);
+    B.ang.max = 90;
+    B.ang.min = 0;
 
     if (in == 1){
         type_choice:
@@ -96,14 +96,14 @@ void initialCond(bool in){
         }
 
         if(E[i].type == 'A'){
-            E[i].vMax = ranNum(100 ,1.2*B.vMax);
+            E[i].vel.max = ranNum(100 ,1.2*B.vel.max);
         } else {
-            E[i].vMax = ranNum(100 ,B.vMax);
+            E[i].vel.max = ranNum(100 ,B.vel.max);
         }
     
-        E[i].vMin = ranNum(10 ,E[i].vMax);
-        E[i].angMin = ranNum(0, 90 - E[i].angRange);
-        E[i].angMax = E[i].angMin + E[i].angRange;
+        E[i].vel.min = ranNum(10 ,E[i].vel.max);
+        E[i].ang.min = ranNum(0, 90 - E[i].angRange);
+        E[i].ang.max = E[i].ang.min + E[i].angRange;
         E[i].position.x = ranNum(0,D);
         E[i].position.y = ranNum(0,D);
         snprintf(E[i].indexNum, sizeof(E[i].indexNum), "E%c%03d", E[i].type, i + 1);

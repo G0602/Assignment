@@ -46,11 +46,11 @@ int battle(int it){
     fprintf(file1, "Current itteration no.%d:\n", it);
     
     B.range.min= 0;
-    B.range.max= rangeF(45, B.vMax);
+    B.range.max= rangeF(45, B.vel.max);
     if(it >= t && B.maxVelMinRng == 0){// only true if current itteration is greater than or equal to t and value for maxVelMinRng isn't previously assigned
-        B.angMin= ranNum(10,30);
-        printf("The gun of the Battle ship is malfunctioned.Now the minimum attacking angle is %d'.\n", B.angMin);
-        B.maxVelMinRng = rangeF(B.angMin, B.vMax);
+        B.ang.min= ranNum(10,30);
+        printf("The gun of the Battle ship is malfunctioned.Now the minimum attacking angle is %.2f'.\n", B.ang.min);
+        B.maxVelMinRng = rangeF(B.ang.min, B.vel.max);
     } 
 
     for(int i = 0; i < N; i++){
@@ -88,19 +88,19 @@ int battle(int it){
 // this function uses the rangeF function to figure out the maximum and the minimum range of E
 void rangeMinMax(int i){
 
-    if((E[i].angMax >= 45) && (E[i].angMin <= 45)){
-        E[i].range.max= rangeF(45, E[i].vMax);
-        if(fabs(E[i].angMax-45) < fabs(E[i].angMin-45)){
-            E[i].range.min= rangeF(E[i].angMin, E[i].vMin);
+    if((E[i].ang.max >= 45) && (E[i].ang.min <= 45)){
+        E[i].range.max= rangeF(45, E[i].vel.max);
+        if(fabs(E[i].ang.max-45) < fabs(E[i].ang.min-45)){
+            E[i].range.min= rangeF(E[i].ang.min, E[i].vel.min);
         } else {
-            E[i].range.min= rangeF(E[i].angMax, E[i].vMin);
+            E[i].range.min= rangeF(E[i].ang.max, E[i].vel.min);
         }
-    } else if(fabs(E[i].angMax-45) < fabs(E[i].angMin-45)){
-        E[i].range.max= rangeF(E[i].angMax, E[i].vMax);
-        E[i].range.min= rangeF(E[i].angMin, E[i].vMin);
+    } else if(fabs(E[i].ang.max-45) < fabs(E[i].ang.min-45)){
+        E[i].range.max= rangeF(E[i].ang.max, E[i].vel.max);
+        E[i].range.min= rangeF(E[i].ang.min, E[i].vel.min);
     } else {
-        E[i].range.max= rangeF(E[i].angMin, E[i].vMax); 
-        E[i].range.min= rangeF(E[i].angMax, E[i].vMin);
+        E[i].range.max= rangeF(E[i].ang.min, E[i].vel.max); 
+        E[i].range.min= rangeF(E[i].ang.max, E[i].vel.min);
     }
 }
 
@@ -114,7 +114,7 @@ float atkTime(int i){
     if(E[i].dist < B.maxVelMinRng)
         return pow(((( E[i].dist * pow(3, 0.5)) / pow(g, 3) * 2)),0.5);
     else
-        return ((2 * B.vMax * sin(0.5 * asin((E[i].dist * 1000 * g)/pow(B.vMax, 2))))/g);
+        return ((2 * B.vel.max * sin(0.5 * asin((E[i].dist * 1000 * g)/pow(B.vel.max, 2))))/g);
 }
 
 

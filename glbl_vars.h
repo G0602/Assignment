@@ -35,11 +35,10 @@ typedef struct {
     Point position;// coordinate of the B in the canvas
     char type;// type of B
     char shpName[25];//name of B
-    Minmax range; // attack range of B, in kilo meter
+    Minmax range; // minimum and maximum attack range of B, in kilo meter
     float maxVelMinRng; // minimum distance where B can fire at maximum shell velocity
-    int vMax;// maximum velocity of B's shell, will be in meter per second
-    int angMax;// maximum angle of B's gun, in degree
-    int angMin;// minimum angle of B's gun, in degree
+    Minmax vel;// maximum and maximum velocity of B's shell, will be in meter per second
+    Minmax ang;// miniun and maximum angle of B's gun, in degree
     bool status;//if status is 1 the ship is fine if it's 0 the the ship is destroyed
     int hp; // this indicates the health of the B. if this hits 0 that means the  ship has been destroyed
 } btlShp;
@@ -49,11 +48,9 @@ typedef struct {
     Point position;// coordinate of the E in the canvas
     char type; // type of E
     char shpName[25];//name of E
-    int vMax;// maximum velocity of E's shell, will be in meter per second
-    int vMin;// minimum velocity of E's shell, will be in meter per second
     int angRange; //the vertical range of the E, in degree
-    int angMax;// maximum angle of E's gun, in degree
-    int angMin;// minimum angle of E's gun, in degree
+    Minmax vel;// maximum and maximum velocity of E's shell, will be in meter per second
+    Minmax ang;// miniun and maximum angle of E's gun, in degree
     Minmax range; // attack range of E, in kilo meter
     float dist;// distance from the B
     bool status;//if status is 1 the ship is fine if it's 0 the the ship is destroyed

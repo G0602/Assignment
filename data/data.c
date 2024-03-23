@@ -19,7 +19,7 @@ void prntDtl(FILE *file){
 //this function will write the details of B in a givven pointer location
 void B_Dtl(FILE *file){
     fprintf(file, "BATTLE_SHIP's Details:\n");
-    fprintf(file, "\tMaximum_Shell_velocity: %d m/s\n", B.vMax);
+    fprintf(file, "\tMaximum_Shell_velocity: %.2f m/s\n", B.vel.max);
     fprintf(file, "\tName: %s\n", B.shpName);
     fprintf(file, "\tType: %c\n", B.type);
     fprintf(file, "\tDurability: %d%%\n", B.hp);
@@ -29,8 +29,8 @@ void B_Dtl(FILE *file){
         fprintf(file, "\tstatus: %s\n", "Offline");
     }
     fprintf(file, "\tcoordiate: ( %d, %d)\n", B.position.x, B.position.y);
-    fprintf(file, "\tMaximum_Angle_of_the_Gun: %d'\n", B.angMax);
-    fprintf(file, "\tMinimum_Angle_of_the_Gun: %d'\n\n", B.angMin);
+    fprintf(file, "\tMaximum_Angle_of_the_Gun: %.2f'\n", B.ang.max);
+    fprintf(file, "\tMinimum_Angle_of_the_Gun: %.2f'\n\n", B.ang.min);
 }
 
 //this function will write the details of one E in a givven pointer location by gettig the number of E and the pointer as the input
@@ -46,10 +46,10 @@ void E_Dtl(int i, FILE *file){
     }
     fprintf(file, "\tindex_number: %s\n", E[i].indexNum);
     fprintf(file, "\tcoordiate: (%d,%d)\n", E[i].position.x, E[i].position.y);
-    fprintf(file, "\tMaximum_Shell_velocity: %d m/s\n", E[i].vMax);
-    fprintf(file, "\tMinimum_Shell_velocity: %d m/s\n", E[i].vMin);
-    fprintf(file, "\tMaximum_Angle_of_the_Gun: %d'\n", E[i].angMax);
-    fprintf(file, "\tMinimum_Angle_of_the_Gun: %d'\n\n", E[i].angMin);
+    fprintf(file, "\tMaximum_Shell_velocity: %.2f m/s\n", E[i].vel.max);
+    fprintf(file, "\tMinimum_Shell_velocity: %.2f m/s\n", E[i].vel.min);
+    fprintf(file, "\tMaximum_Angle_of_the_Gun: %.2f'\n", E[i].ang.max);
+    fprintf(file, "\tMinimum_Angle_of_the_Gun: %.2f'\n\n", E[i].ang.min);
 }
 
 // this function list all the directories in the battle_info directory and return the pointer to the directory the user chose.
