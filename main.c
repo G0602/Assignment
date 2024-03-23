@@ -48,7 +48,7 @@ int main(){
         goto check;
     }
     
-    do{
+    do{ //this loop will go on forever until user decide to exit or an error happen
         iteration=0;//for every new battles itterations resets
         genName(); // name the battle based on time. defined in random.c
         initialCond(0); //generating the initial conditions randomly. defined in initial.c
@@ -56,7 +56,7 @@ int main(){
         
         q = mainMenu();// if this function return 1 the programm will exit. defined in menu.c
         if(q == 1){
-            continue;
+            break;
         }
         
         printf("%s begins!!!!!!!!!\n", name);

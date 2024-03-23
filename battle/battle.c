@@ -57,6 +57,10 @@ int battle(int it){
         rangeMinMax(i);
         E[i].dist = distCalc(B.position.x, B.position.y, E[i].position.x, E[i].position.y);
         canEAtk(i);
+        if (B.status == 0){// if B is destroyed this will break the loop with a message
+            printf("The kill shot was deliverd by: %s", E[i].indexNum);
+            break;
+        }
     }
     
     if (B.status == 1){
@@ -120,16 +124,18 @@ float atkTime(int i){
 
 //this function check whether the E can attack B if E has not been destroyed
 void canEAtk(int i){
-    if(E[i].status == 0)
+    if(E[i].status == 0){
         return;
-
+    }
     if((E[i].dist <= E[i].range.max) && (E[i].dist >= E[i].range.min)){
         B.hp -= E[i].ip;
         if(B.hp <= 0){
-            printf("B is destroyed due to its durability reaching 0.\n");
+            printf("B is destroyed due to its durability reaching 0%%.\n");
             B.status = 0;
+            B.hp = 0;
+        } else{
+            printf("B has been attcked by:%s and lost %d%% of its durability.\n", E[i].indexNum, E[i].ip);
         }
-        printf("B has been attcked by:%s and lost %d%% of its durability.\n", E[i].indexNum, E[i].ip);
     }
 }
 
