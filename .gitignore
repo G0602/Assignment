@@ -4,6 +4,6 @@
 # Ignore output files
 *.txt
 
-.pdf
+*.pdf
 
-.odt
+*.odt
