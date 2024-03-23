@@ -77,36 +77,37 @@ void opt2(void){
     printf("\nNaval Battle Simulator Instructions\n\n");
     
     printf("Initialization\n");
-    printf("    Upon launching, the simulator will display the main menu, providing options to initialize the battlefield, simulate battles, and explore additional features.\n");
-    printf("    Enter the required parameters as prompted, including:\n");
-    printf("        The size of the canvas area (D), specifying the square dimension of the battlefield.\n");
-    printf("        The number of escort ships present on the battlefield (N).\n");
-    printf("        Details of the battleship (B) and each escort ship (E) including:\n");
-    printf("            Maximum and minimum vertical angles.\n");
-    printf("            Maximum shell velocity.\n");
-    printf("            Type of each escort ship.\n");
-    printf("            Initial positions of the battleship and escort ships.\n\n");
+    printf("\tUpon launching, the simulator will display the main menu, providing options to initialize the battlefield, simulate battles, and explore additional features.\n");
+    printf("\tEnter the required parameters as prompted, including:\n");
+    printf("\t\tThe size of the canvas area (D), specifying the square dimension of the battlefield.\n");
+    printf("\t\tThe number of escort ships present on the battlefield (N).\n");
+    printf("\t\tDetails of the battleship (B) and each escort ship (E) including:\n");
+    printf("\t\t\tMaximum and minimum vertical angles.\n");
+    printf("\t\t\tMaximum shell velocity.\n");
+    printf("\t\t\tType of each escort ship.\n");
+    printf("\t\t\tInitial positions of the battleship and escort ships.\n\n");
 
     printf("Simulating the Battle\n");
-    printf("    Once initialization is complete, the simulator will simulate the naval battle based on the provided conditions. Those conditions can be randomly generated or inputted by the user.\n");
-    printf("    The battlefield has D=1000, N=1000 as the default values, but the user can change them if they want.\n");
-    printf("    The battleship (B) will attempt to destroy as many escort ships (E) as possible while minimizing damage from enemy attacks.\n\n");
+    printf("\tOnce initialization is complete, the simulator will simulate the naval battle based on the provided conditions. Those conditions can be randomly generated or inputted by the user.\n");
+    printf("\tThe battlefield has D=1000, N=1000 as the default values, but the user can change them if they want.\n");
+    printf("\tThe battleship (B) will attempt to destroy as many escort ships (E) as possible while minimizing damage from enemy attacks.\n\n");
 
     printf("Simulation Results\n");
-    printf("    After the simulation concludes, you will receive detailed information about the outcome of the battle.\n");
-    printf("    If the battleship is sunk during the simulation, the index number of the escort ship responsible will be displayed.\n");
-    printf("    Details of all escort ships hit by the battleship, including index, time of impact, and any other relevant information, will be provided.\n");
-    printf("    The final conditions of the battlefield will be saved to a text file for reference.\n\n");
+    printf("\tAfter the simulation concludes, you will receive detailed information about the outcome of the battle.\n");
+    printf("\tIf the battleship is sunk during the simulation, the index number of the escort ship responsible will be displayed.\n");
+    printf("\tDetails of all escort ships hit by the battleship, including index, time of impact, and any other relevant information, will be provided.\n");
+    printf("\tThe final conditions of the battlefield will be saved to a text file for reference.\n");
+    printf("\tAll the simulation results of past battles are saved in text files in folders with the corosponding battle name you can view them by selecting the proper option in the main menu.\n");
 
     printf("Exploring Additional Features\n");
-    printf("    The simulator includes various features to enhance the simulation experience.\n");
-    printf("    Users can explore different scenarios by adjusting initial conditions and parameters.\n\n");
+    printf("\tThe simulator includes various features to enhance the simulation experience.\n");
+    printf("\tUsers can explore different scenarios by adjusting initial conditions and parameters.\n\n");
 
     printf("Exiting the Simulator\n");
-    printf("    You can exit the simulator by selecting the Exit option in the main menu.\n");
+    printf("\tYou can exit the simulator by selecting the Exit option in the main menu.\n");
     printf(ANSI_COLOR_YELLOW);
     printf("!!!!!!!!!!Displays past simulation results by accessing text files. Each text file will be shown using vi or vim, and users can quit using :q.!!!!!!!!!!\n");
-    printf("!!!!!!!!!!I have written this proggram using some linux terminal commands so this might not work on windows or mac.!!!!!!!!!!\n");
+    printf("!!!!!!!!!!I have written this program using some linux terminal commands so this might not work on windows or mac.!!!!!!!!!!\n");
     printf(ANSI_COLOR_RESET);
 
     printf("\n\n");
