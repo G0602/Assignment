@@ -168,8 +168,8 @@ void canBAtk(FILE *file){
         if(killTime < atkTime(i) + (B.loadTime * fireCount)){ //to figure out the longest time it took to attack
             killTime = atkTime(i) + (B.loadTime * fireCount);
         }
-        printf("\t%s( %d, %d)\n", E[i].indexNum, E[i].position.x, E[i].position.y);
-        fprintf(file, "%s\n", E[i].indexNum);
+        printf("\t%d.%s at the location( %d, %d)\n", j, E[i].indexNum, E[i].position.x, E[i].position.y);
+        fprintf(file, "\t%d.%s at the location( %d, %d)\n", j, E[i].indexNum, E[i].position.x, E[i].position.y);
         fireCount++;
     }
 
